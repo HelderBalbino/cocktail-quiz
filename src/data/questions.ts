@@ -113,4 +113,125 @@ export const cocktailQuestions: QuizQuestion[] = [
 		explanation:
 			"'On the rocks' means served over ice cubes in a rocks glass (old fashioned glass).",
 	},
+	{
+		id: 11,
+		question:
+			'What is the key ingredient that makes an Ember Gimlet unique?',
+		options: [
+			'Elderflower liqueur',
+			'Jalapeño & dill cordial',
+			'Cucumber syrup',
+			'Basil simple syrup',
+		],
+		correctAnswer: 1,
+		explanation:
+			'An Ember Gimlet uses house-made jalapeño & dill cordial combined with vodka or gin, creating a spicy and herbaceous flavor profile.',
+	},
+	{
+		id: 12,
+		question: 'What glassware is used for an "on the rocks" Ember Gimlet?',
+		options: [
+			'Coupe glass',
+			'Martini glass',
+			'Rayo rock glass',
+			'Highball glass',
+		],
+		correctAnswer: 2,
+		explanation:
+			'For an on the rocks serve, an Ember Gimlet is stirred into a rayo rock glass, while the straight up version uses a praline coupe glass.',
+	},
+	{
+		id: 13,
+		question:
+			'In professional bartending, what color edible paint garnish is used for a gin-based Ember Gimlet?',
+		options: [
+			'Blue edible paint',
+			'Red edible paint',
+			'Green edible paint',
+			'Yellow edible paint',
+		],
+		correctAnswer: 2,
+		explanation:
+			'Green edible paint is used as garnish for gin-based Ember Gimlets, while blue edible paint is used for vodka-based versions.',
+	},
+	{
+		id: 14,
+		question: 'What is the standard ratio for an Ember Gimlet recipe?',
+		options: [
+			'2:1 spirit to cordial',
+			'1:1 spirit to cordial',
+			'3:1 spirit to cordial',
+			'1:2 spirit to cordial',
+		],
+		correctAnswer: 1,
+		explanation:
+			'An Ember Gimlet uses equal parts (50ml each) of Bone Idyll Vodka or Gin and house-made jalapeño & dill cordial.',
+	},
+	{
+		id: 15,
+		question: 'Which technique is used to prepare an Ember Gimlet?',
+		options: [
+			'Shaken with ice',
+			'Built in glass',
+			'Stirred in mixing glass',
+			'Muddled and strained',
+		],
+		correctAnswer: 2,
+		explanation:
+			'An Ember Gimlet is stirred in a mixing glass before being served either straight up in a praline coupe or on the rocks in a rayo rock glass.',
+	},
+	{
+		id: 16,
+		question: 'What type of glass is used for an English Pear Bellini?',
+		options: ['Coupe glass', 'Wine glass', 'Flute glass', 'Highball glass'],
+		correctAnswer: 2,
+		explanation:
+			'An English Pear Bellini is built directly into a flute glass, which is the traditional glassware for sparkling wine cocktails.',
+	},
+	{
+		id: 17,
+		question:
+			'What is the main sparkling wine used in an English Pear Bellini?',
+		options: ['Champagne', 'Cava', 'Prosecco', 'Crémant'],
+		correctAnswer: 2,
+		explanation:
+			'An English Pear Bellini uses 90ml of Prosecco as the sparkling wine component, topped over the pear and elderflower purée mix.',
+	},
+	{
+		id: 18,
+		question:
+			'How much pear & elderflower purée mix is used in an English Pear Bellini?',
+		options: ['25ml', '35ml', '45ml', '50ml'],
+		correctAnswer: 1,
+		explanation:
+			'An English Pear Bellini uses exactly 35ml of pear & elderflower purée mix, which is then topped with 90ml of Prosecco.',
+	},
+	{
+		id: 19,
+		question:
+			'What is the proper mixing technique for an English Pear Bellini?',
+		options: [
+			'Shake vigorously',
+			'Stir gently with a bar spoon',
+			'Layer without mixing',
+			'Muddle the ingredients',
+		],
+		correctAnswer: 1,
+		explanation:
+			'After adding the pear & elderflower purée and topping with Prosecco, an English Pear Bellini should be stirred gently with a bar spoon to preserve the bubbles.',
+	},
+	{
+		id: 20,
+		question:
+			'What flavor profile does elderflower add to the English Pear Bellini?',
+		options: [
+			'Citrus and tart',
+			'Floral and sweet',
+			'Spicy and warm',
+			'Bitter and herbal',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Elderflower provides a delicate floral and sweet flavor that complements the pear purée, creating an elegant and aromatic cocktail profile.',
+	},
 ];
