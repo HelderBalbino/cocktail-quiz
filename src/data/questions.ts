@@ -20,20 +20,6 @@ const baseQuestions: QuizQuestion[] = [
 			'A Mojito is made with white rum, sugar, lime juice, soda water, and mint.',
 	},
 	{
-		id: 3,
-		question:
-			'What type of glass is traditionally used for serving a Martini?',
-		options: [
-			'Rocks glass',
-			'Highball glass',
-			'Martini glass',
-			'Wine glass',
-		],
-		correctAnswer: 2,
-		explanation:
-			'A Martini is traditionally served in a Martini glass (also called a cocktail glass).',
-	},
-	{
 		id: 4,
 		question: 'What are the three main ingredients in a Negroni?',
 		options: [
