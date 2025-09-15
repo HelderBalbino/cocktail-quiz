@@ -1,109 +1,310 @@
+<div align="center">
+
 # 🍸 Cocktail Quiz
 
-A fun and interactive cocktail quiz web application built with React,
-TypeScript, Vite, and Tailwind CSS.
+**Test Your Mixology Knowledge with Style**
 
-## Features
+[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
--   **Interactive Quiz Interface**: Clean and modern UI with multiple choice
-    questions
--   **Progress Tracking**: Visual progress bar showing completion status
--   **Instant Feedback**: Explanations provided after each question
--   **Scoring System**: Comprehensive results with percentage scores and
-    rankings
--   **Responsive Design**: Works perfectly on desktop and mobile devices
--   **10 Cocktail Questions**: Covers spirits, recipes, techniques, and cocktail
-    knowledge
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Maintainer](https://img.shields.io/badge/Maintainer-HelderBalbino-blue?style=for-the-badge)](https://github.com/HelderBalbino)
 
-## Technologies Used
+[🚀 Live Demo](#live-demo) • [📖 Documentation](#documentation) •
+[🛠️ Installation](#installation) • [🤝 Contributing](#contributing)
 
--   **React 18** - Modern React with hooks
--   **TypeScript** - Type-safe development
--   **Vite** - Fast build tool and development server
--   **Tailwind CSS** - Utility-first CSS framework
--   **Modern ES6+** - Latest JavaScript features
+---
 
-## Getting Started
+</div>
+
+## 📋 Table of Contents
+
+-   [Overview](#overview)
+-   [Features](#features)
+-   [Screenshots](#screenshots)
+-   [Tech Stack](#tech-stack)
+-   [Getting Started](#getting-started)
+-   [Project Structure](#project-structure)
+-   [Quiz System](#quiz-system)
+-   [Development](#development)
+-   [Contributing](#contributing)
+-   [License](#license)
+-   [Acknowledgments](#acknowledgments)
+
+## 🎯 Overview
+
+**Cocktail Quiz** is a modern, interactive web application designed to test and
+enhance your knowledge of cocktails, spirits, and bartending techniques. Built
+with cutting-edge technologies, it offers an engaging user experience with
+instant feedback and comprehensive scoring.
+
+### Why This Project?
+
+-   🎓 **Educational**: Learn about cocktail recipes, spirits, and mixology
+-   🎮 **Interactive**: Engaging quiz format with immediate feedback
+-   📱 **Responsive**: Perfect experience on all devices
+-   🏆 **Competitive**: Score tracking and performance rankings
+-   🚀 **Modern**: Built with latest web technologies
+
+## ✨ Features
+
+### Core Functionality
+
+-   🧠 **10 Curated Questions** covering cocktail knowledge
+-   🎯 **Multiple Choice Format** with 4 options per question
+-   📊 **Real-time Progress Tracking** with visual indicators
+-   💡 **Instant Explanations** after each answer
+-   🏅 **Comprehensive Scoring System** with performance tiers
+-   🔄 **Quiz Restart Capability** for multiple attempts
+
+### User Experience
+
+-   🎨 **Modern UI/UX** with gradient backgrounds and smooth animations
+-   📱 **Fully Responsive Design** for desktop, tablet, and mobile
+-   ⚡ **Lightning Fast** powered by Vite
+-   🎭 **Interactive Feedback** with color-coded answers
+-   🚀 **Smooth Transitions** between questions and screens
+
+## 📸 Screenshots
+
+> _Screenshots section - Add actual screenshots of your application here_
+
+<details>
+<summary>Click to view screenshots</summary>
+
+|                 Start Screen                  |               Quiz Question                |           Results Screen            |
+| :-------------------------------------------: | :----------------------------------------: | :---------------------------------: |
+| ![Start Screen](docs/images/start-screen.png) | ![Quiz Question](docs/images/question.png) | ![Results](docs/images/results.png) |
+
+</details>
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+-   **[React 18](https://reactjs.org/)** - Modern UI library with hooks
+-   **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+-   **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+-   **[Vite](https://vitejs.dev/)** - Next-generation build tool
+
+### Development Tools
+
+-   **ESLint** - Code linting and quality
+-   **PostCSS** - CSS processing
+-   **Autoprefixer** - CSS vendor prefixing
+
+### Browser Support
+
+-   ✅ Chrome (latest)
+-   ✅ Firefox (latest)
+-   ✅ Safari (latest)
+-   ✅ Edge (latest)
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
--   Node.js (version 16 or higher)
--   npm or yarn
+Ensure you have the following installed:
+
+-   **Node.js** (v16.0.0 or higher)
+-   **npm** (v7.0.0 or higher) or **yarn** (v1.22.0 or higher)
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository**
 
-```bash
-git clone <repository-url>
-cd cocktail-quiz
-```
+    ```bash
+    git clone https://github.com/HelderBalbino/cocktail-quiz.git
+    cd cocktail-quiz
+    ```
 
-2. Install dependencies:
+2. **Install dependencies**
 
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 
-3. Start the development server:
+3. **Start development server**
 
-```bash
-npm run dev
-```
+    ```bash
+    npm run dev
+    ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+4. **Open your browser** Navigate to
+   [http://localhost:5173](http://localhost:5173)
 
-### Build for Production
+### Build Commands
 
-```bash
-npm run build
-```
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
+| `npm run preview` | Preview production build |
+| `npm run lint`    | Run ESLint               |
 
-### Preview Production Build
-
-```bash
-npm run preview
-```
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-src/
-├── components/          # React components
-│   ├── QuestionCard.tsx    # Individual question display
-│   ├── ProgressBar.tsx     # Progress tracking
-│   ├── ResultsScreen.tsx   # Final results display
-│   └── StartScreen.tsx     # Welcome screen
-├── data/
-│   └── questions.ts     # Quiz questions and answers
-├── types/
-│   └── quiz.ts          # TypeScript interfaces
-├── App.tsx              # Main application component
-├── main.tsx             # Application entry point
-└── index.css            # Tailwind CSS imports
+cocktail-quiz/
+├── 📁 public/              # Static assets
+├── 📁 src/
+│   ├── 📁 components/      # React components
+│   │   ├── QuestionCard.tsx   # Individual question display
+│   │   ├── ProgressBar.tsx    # Progress tracking component
+│   │   ├── ResultsScreen.tsx  # Final results display
+│   │   └── StartScreen.tsx    # Welcome/start screen
+│   ├── 📁 data/
+│   │   └── questions.ts       # Quiz questions database
+│   ├── 📁 types/
+│   │   └── quiz.ts           # TypeScript type definitions
+│   ├── App.tsx               # Main application component
+│   ├── main.tsx              # Application entry point
+│   └── index.css             # Global styles (Tailwind)
+├── 📄 package.json           # Dependencies and scripts
+├── 📄 vite.config.ts         # Vite configuration
+├── 📄 tailwind.config.js     # Tailwind CSS configuration
+├── 📄 tsconfig.json          # TypeScript configuration
+└── 📄 README.md              # Project documentation
 ```
 
-## Quiz Features
+## 🎮 Quiz System
 
--   **10 Questions** covering various cocktail topics
--   **Multiple Choice** format with 4 options each
--   **Immediate Feedback** with explanations
--   **Progressive Scoring** with visual feedback
--   **Performance Rankings** based on percentage scores
--   **Restart Functionality** to retake the quiz
+### Question Categories
 
-## Scoring System
+Our carefully curated questions cover:
 
--   90-100%: Outstanding! You're a cocktail master! 🏆
--   80-89%: Excellent work! You know your cocktails! 🥇
--   70-79%: Great job! You're well on your way! 🥈
--   60-69%: Good effort! Keep learning! 🥉
--   Below 60%: Don't worry, practice makes perfect! 📚
+-   🥃 **Spirits & Liqueurs** - Base spirits and flavor profiles
+-   🍹 **Classic Cocktails** - Traditional recipes and techniques
+-   🍸 **Modern Mixology** - Contemporary bartending methods
+-   📚 **Cocktail Knowledge** - History, terminology, and culture
 
-## Contributing
+### Scoring Tiers
 
-Feel free to submit issues and enhancement requests!
+| Score Range | Badge |                 Achievement                  |
+| :---------: | :---: | :------------------------------------------: |
+|   90-100%   |  🏆   | **Cocktail Master** - Outstanding knowledge! |
+|   80-89%    |  🥇   |    **Mixology Expert** - Excellent work!     |
+|   70-79%    |  🥈   |          **Bartender** - Great job!          |
+|   60-69%    |  🥉   |        **Apprentice** - Good effort!         |
+|  Below 60%  |  📚   |         **Student** - Keep learning!         |
 
-## License
+### Interactive Features
 
-This project is open source and available under the [MIT License](LICENSE).
+-   **Progressive Feedback**: Instant visual feedback with color-coded answers
+-   **Educational Explanations**: Learn from every question with detailed
+    explanations
+-   **Performance Tracking**: Monitor your progress with a dynamic progress bar
+-   **Adaptive UI**: Responsive design that works seamlessly across all devices
+
+## 🔧 Development
+
+### Code Quality
+
+This project maintains high code quality standards:
+
+-   **TypeScript**: Full type safety and enhanced developer experience
+-   **ESLint**: Consistent code style and error prevention
+-   **Component Architecture**: Modular, reusable React components
+-   **Responsive Design**: Mobile-first approach with Tailwind CSS
+
+### Performance Features
+
+-   ⚡ **Fast Loading**: Optimized with Vite for instant development
+-   📦 **Tree Shaking**: Automatic unused code elimination
+-   🗜️ **Asset Optimization**: Compressed images and minified CSS/JS
+-   🔄 **Hot Module Replacement**: Instant updates during development
+
+### Browser Compatibility
+
+| Browser | Version Support      |
+| ------- | -------------------- |
+| Chrome  | ✅ Latest 2 versions |
+| Firefox | ✅ Latest 2 versions |
+| Safari  | ✅ Latest 2 versions |
+| Edge    | ✅ Latest 2 versions |
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+### How to Contribute
+
+1. **Fork the repository**
+
+    ```bash
+    git fork https://github.com/HelderBalbino/cocktail-quiz.git
+    ```
+
+2. **Create a feature branch**
+
+    ```bash
+    git checkout -b feature/amazing-feature
+    ```
+
+3. **Make your changes**
+
+    - Add new questions to `src/data/questions.ts`
+    - Improve UI components
+    - Fix bugs or add features
+
+4. **Commit your changes**
+
+    ```bash
+    git commit -m "Add amazing feature"
+    ```
+
+5. **Push to your branch**
+
+    ```bash
+    git push origin feature/amazing-feature
+    ```
+
+6. **Open a Pull Request**
+
+### Contribution Ideas
+
+-   📝 Add more cocktail questions
+-   🎨 Improve UI/UX design
+-   🌐 Add internationalization
+-   📱 Enhance mobile experience
+-   🔊 Add sound effects
+-   📊 Add statistics tracking
+
+## 📝 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE)
+file for details.
+
+```
+MIT License
+
+Copyright (c) 2025 Helder Balbino
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software...
+```
+
+## 🙏 Acknowledgments
+
+-   **React Team** - For the amazing React library
+-   **Vite Team** - For the lightning-fast build tool
+-   **Tailwind CSS** - For the utility-first CSS framework
+-   **TypeScript Team** - For type-safe JavaScript
+-   **Cocktail Community** - For inspiration and knowledge sharing
+
+---
+
+<div align="center">
+
+**Made with ❤️ and 🍸 by [Helder Balbino](https://github.com/HelderBalbino)**
+
+⭐ **Star this repo if you found it helpful!** ⭐
+
+[🔝 Back to Top](#-cocktail-quiz)
+
+</div>
