@@ -1,6 +1,16 @@
 import { QuizQuestion } from '../types/quiz';
 
-export const cocktailQuestions: QuizQuestion[] = [
+// Fisher-Yates shuffle algorithm to randomize array
+const shuffleArray = <T>(array: T[]): T[] => {
+	const shuffled = [...array]; // Create a copy to avoid mutating original
+	for (let i = shuffled.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+	}
+	return shuffled;
+};
+
+const baseQuestions: QuizQuestion[] = [
 	{
 		id: 1,
 		question: 'What is the main spirit in a Mojito?',
@@ -234,4 +244,91 @@ export const cocktailQuestions: QuizQuestion[] = [
 		explanation:
 			'Elderflower provides a delicate floral and sweet flavor that complements the pear purée, creating an elegant and aromatic cocktail profile.',
 	},
+	{
+		id: 21,
+		question: 'What type of gin is used in a Garden Collins?',
+		options: [
+			'London Dry Gin',
+			'Malfy Rosa Grapefruit Gin',
+			"Hendrick's Gin",
+			'Bombay Sapphire',
+		],
+		correctAnswer: 1,
+		explanation:
+			'A Garden Collins uses 50ml of Malfy Rosa Grapefruit Gin, which provides the citrus and botanical base for this refreshing cocktail.',
+	},
+	{
+		id: 22,
+		question: 'What is the ratio of Garden Collins Mix to gin?',
+		options: [
+			'2:1 mix to gin',
+			'1:1 mix to gin',
+			'1:2 mix to gin',
+			'3:1 mix to gin',
+		],
+		correctAnswer: 1,
+		explanation:
+			'A Garden Collins uses equal parts (50ml each) of Garden Collins Mix and Malfy Rosa Grapefruit Gin for perfect balance.',
+	},
+	{
+		id: 23,
+		question:
+			'What cocktail technique is used to prepare a Garden Collins?',
+		options: [
+			'Stir and strain',
+			'Build in glass',
+			'Whip shake and strain',
+			'Muddle and shake',
+		],
+		correctAnswer: 2,
+		explanation:
+			'A Garden Collins is prepared using the whip shake technique - shaken with cubed ice and strained into a Collins glass filled with fresh cubed ice.',
+	},
+	{
+		id: 24,
+		question: 'What glassware is used for serving a Garden Collins?',
+		options: [
+			'Rocks glass',
+			'Coupe glass',
+			'Collins glass',
+			'Highball glass',
+		],
+		correctAnswer: 2,
+		explanation:
+			'A Garden Collins is served in a Collins glass filled with cubed ice, which is the traditional tall glass for Collins-style cocktails.',
+	},
+	{
+		id: 25,
+		question:
+			'How is a Garden Collins finished after shaking and straining?',
+		options: [
+			'Garnished with lime',
+			'Topped with soda water',
+			'Served neat',
+			'Flamed orange peel',
+		],
+		correctAnswer: 1,
+		explanation:
+			'After whip shaking and straining into the Collins glass, a Garden Collins is topped with soda water to add effervescence and dilution.',
+	},
+	{
+		id: 26,
+		question:
+			'What is a "whip shake" and why is it used in cocktail preparation?',
+		options: [
+			'A gentle shake to preserve carbonation',
+			'A short, vigorous shake to aerate and chill quickly',
+			'A technique used only for cream-based cocktails',
+			'A method to layer ingredients without mixing',
+		],
+		correctAnswer: 1,
+		explanation:
+			"A whip shake is a short, vigorous shaking technique that quickly aerates the cocktail and chills it without over-diluting. It's ideal for cocktails that will be topped with soda or other mixers, creating a light, frothy texture.",
+	},
 ];
+
+// Export shuffled questions that will be randomized each time the module is imported
+export const cocktailQuestions: QuizQuestion[] = shuffleArray(baseQuestions);
+
+// Function to get a fresh shuffled set of questions (useful for restarting quiz)
+export const getShuffledQuestions = (): QuizQuestion[] => shuffleArray(baseQuestions);
