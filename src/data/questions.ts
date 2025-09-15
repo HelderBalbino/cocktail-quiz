@@ -331,4 +331,5 @@ const baseQuestions: QuizQuestion[] = [
 export const cocktailQuestions: QuizQuestion[] = shuffleArray(baseQuestions);
 
 // Function to get a fresh shuffled set of questions (useful for restarting quiz)
-export const getShuffledQuestions = (): QuizQuestion[] => shuffleArray(baseQuestions);
+export const getShuffledQuestions = (): QuizQuestion[] =>
+	shuffleArray(baseQuestions);
