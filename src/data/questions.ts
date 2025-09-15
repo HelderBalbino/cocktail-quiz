@@ -20,14 +20,6 @@ const baseQuestions: QuizQuestion[] = [
 			'A Mojito is made with white rum, sugar, lime juice, soda water, and mint.',
 	},
 	{
-		id: 2,
-		question: "Which cocktail is known as the 'King of Cocktails'?",
-		options: ['Manhattan', 'Martini', 'Old Fashioned', 'Negroni'],
-		correctAnswer: 0,
-		explanation:
-			"The Manhattan is often referred to as the 'King of Cocktails' due to its classic status and popularity.",
-	},
-	{
 		id: 3,
 		question:
 			'What type of glass is traditionally used for serving a Martini?',
