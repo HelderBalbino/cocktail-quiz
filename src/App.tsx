@@ -71,12 +71,17 @@ function App() {
 	};
 
 	const getQuizResult = (): QuizResult => {
-		const percentage = Math.round((quizState.score / questions.length) * 100);
+		const percentage = Math.round(
+			(quizState.score / questions.length) * 100,
+		);
 		let message = '';
 
-		if (percentage >= 90) message = "Outstanding! You're a cocktail master! 🍸";
-		else if (percentage >= 80) message = 'Excellent work! You know your cocktails! 🥇';
-		else if (percentage >= 70) message = "Great job! You're well on your way! 🥈";
+		if (percentage >= 90)
+			message = "Outstanding! You're a cocktail master! 🍸";
+		else if (percentage >= 80)
+			message = 'Excellent work! You know your cocktails! 🥇';
+		else if (percentage >= 70)
+			message = "Great job! You're well on your way! 🥈";
 		else if (percentage >= 60) message = 'Good effort! Keep learning! 🥉';
 		else message = "Don't worry, practice makes perfect! 📚";
 
@@ -120,7 +125,10 @@ function App() {
 		return (
 			<div className='min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900'>
 				<div className='container mx-auto px-4 py-8'>
-					<ResultsScreen result={getQuizResult()} onRestart={resetQuiz} />
+					<ResultsScreen
+						result={getQuizResult()}
+						onRestart={resetQuiz}
+					/>
 				</div>
 			</div>
 		);
@@ -149,7 +157,8 @@ function App() {
 							onClick={handleNextQuestion}
 							className='bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-200 transform hover:scale-105'
 						>
-							{quizState.currentQuestionIndex === questions.length - 1
+							{quizState.currentQuestionIndex ===
+							questions.length - 1
 								? '🏁 See Results'
 								: '➡️ Next Question'}
 						</button>
