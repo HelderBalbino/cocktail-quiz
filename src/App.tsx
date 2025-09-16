@@ -110,8 +110,8 @@ function App() {
 
 	if (!hasStarted) {
 		return (
-			<div className='min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900'>
-				<div className='container mx-auto px-4 py-8'>
+			<div className='min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50'>
+				<div className='container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8'>
 					<StartScreen
 						onStart={startQuiz}
 						totalQuestions={questions.length}
@@ -123,8 +123,8 @@ function App() {
 
 	if (quizState.showResults) {
 		return (
-			<div className='min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900'>
-				<div className='container mx-auto px-4 py-8'>
+			<div className='min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50'>
+				<div className='container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8'>
 					<ResultsScreen
 						result={getQuizResult()}
 						onRestart={resetQuiz}
@@ -137,8 +137,8 @@ function App() {
 	const currentQuestion = questions[quizState.currentQuestionIndex];
 
 	return (
-		<div className='min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900'>
-			<div className='container mx-auto px-4 py-8'>
+		<div className='min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50'>
+			<div className='container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8'>
 				<ProgressBar
 					current={quizState.currentQuestionIndex}
 					total={questions.length}
@@ -152,10 +152,10 @@ function App() {
 				/>
 
 				{showExplanation && (
-					<div className='max-w-2xl mx-auto mt-6 text-center'>
+					<div className='max-w-2xl mx-auto mt-4 sm:mt-6 text-center px-4 sm:px-0'>
 						<button
 							onClick={handleNextQuestion}
-							className='bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-200 transform hover:scale-105'
+							className='bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-200 transform hover:scale-105 w-full sm:w-auto min-h-[48px] touch-manipulation text-sm sm:text-base'
 						>
 							{quizState.currentQuestionIndex ===
 							questions.length - 1
