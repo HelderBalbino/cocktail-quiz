@@ -49,6 +49,26 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 
 			{showExplanation && question.explanation && (
 				<div className='mt-4 sm:mt-6 p-3 sm:p-4 bg-amber-50 border-l-4 border-amber-400 rounded'>
+					{/* Personalized message based on correct/incorrect answer */}
+					<div className='mb-3'>
+						{selectedAnswer === question.correctAnswer ? (
+							<div className='flex items-center gap-2 text-green-700 font-medium text-sm sm:text-base'>
+								<span className='text-lg'>🎉</span>
+								<span>
+									Excellent! You're a cocktail connoisseur!
+								</span>
+							</div>
+						) : (
+							<div className='flex items-center gap-2 text-orange-700 font-medium text-sm sm:text-base'>
+								<span className='text-lg'>📚</span>
+								<span>
+									Close, but not quite! Here's what you need
+									to know:
+								</span>
+							</div>
+						)}
+					</div>
+
 					<h3 className='font-semibold text-amber-800 mb-2 text-sm sm:text-base'>
 						Explanation:
 					</h3>
