@@ -20,7 +20,7 @@ const StartScreen: React.FC<StartScreenProps> = ({
 				</h1>
 				<p className='text-gray-600 text-base sm:text-lg leading-relaxed px-2'>
 					Test your knowledge of cocktails, spirits, and bartending
-					techniques. Are you ready to become a cocktail connoisseur?
+					techniques.
 				</p>
 			</div>
 
