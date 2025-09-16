@@ -15,27 +15,27 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 	showExplanation,
 }) => {
 	return (
-		<div className='bg-white rounded-lg shadow-xl p-6 max-w-2xl mx-auto'>
-			<h2 className='text-2xl font-bold text-gray-800 mb-6'>
+		<div className='bg-white rounded-lg shadow-xl p-4 sm:p-6 max-w-2xl mx-auto'>
+			<h2 className='text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight'>
 				{question.question}
 			</h2>
 
-			<div className='space-y-4'>
+			<div className='space-y-3 sm:space-y-4'>
 				{question.options.map((option, index) => (
 					<button
 						key={index}
 						onClick={() => onAnswerSelect(index)}
-						className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ${
+						className={`w-full p-4 sm:p-5 text-left rounded-lg border-2 transition-all duration-200 min-h-[60px] touch-manipulation text-sm sm:text-base ${
 							selectedAnswer === index
 								? showExplanation
 									? index === question.correctAnswer
 										? 'bg-green-100 border-green-500 text-green-800'
 										: 'bg-red-100 border-red-500 text-red-800'
-									: 'bg-blue-100 border-blue-500 text-blue-800'
+									: 'bg-amber-100 border-amber-500 text-amber-800'
 								: showExplanation &&
 								  index === question.correctAnswer
 								? 'bg-green-100 border-green-500 text-green-800'
-								: 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100'
+								: 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100 active:bg-gray-200'
 						}`}
 						disabled={showExplanation}
 					>
@@ -48,11 +48,13 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 			</div>
 
 			{showExplanation && question.explanation && (
-				<div className='mt-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded'>
-					<h3 className='font-semibold text-blue-800 mb-2'>
+				<div className='mt-4 sm:mt-6 p-3 sm:p-4 bg-amber-50 border-l-4 border-amber-400 rounded'>
+					<h3 className='font-semibold text-amber-800 mb-2 text-sm sm:text-base'>
 						Explanation:
 					</h3>
-					<p className='text-blue-700'>{question.explanation}</p>
+					<p className='text-amber-700 text-sm sm:text-base leading-relaxed'>
+						{question.explanation}
+					</p>
 				</div>
 			)}
 		</div>
