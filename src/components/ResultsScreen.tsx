@@ -16,23 +16,23 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ result, onRestart }) => {
 	};
 
 	const getGradeColor = (percentage: number) => {
-		if (percentage >= 90) return 'text-yellow-600';
-		if (percentage >= 80) return 'text-amber-600';
-		if (percentage >= 70) return 'text-orange-600';
-		if (percentage >= 60) return 'text-red-600';
-		return 'text-gray-600';
+		if (percentage >= 90) return 'text-yellow-400';
+		if (percentage >= 80) return 'text-emerald-400';
+		if (percentage >= 70) return 'text-teal-400';
+		if (percentage >= 60) return 'text-amber-400';
+		return 'text-slate-400';
 	};
 
 	return (
-		<div className='bg-white rounded-lg shadow-xl p-4 sm:p-6 lg:p-8 max-w-2xl mx-auto text-center'>
+		<div className='bg-slate-800 border border-slate-700 rounded-lg shadow-2xl p-4 sm:p-6 lg:p-8 max-w-2xl mx-auto text-center'>
 			<div className='mb-4 sm:mb-6'>
 				<div className='text-4xl sm:text-5xl lg:text-6xl mb-3 sm:mb-4'>
 					{getGradeEmoji(result.percentage)}
 				</div>
-				<h2 className='text-2xl sm:text-3xl font-bold text-gray-800 mb-2'>
+				<h2 className='text-2xl sm:text-3xl font-bold text-white mb-2'>
 					Quiz Complete!
 				</h2>
-				<p className='text-gray-600 text-base sm:text-lg px-2'>
+				<p className='text-slate-300 text-base sm:text-lg px-2'>
 					{result.message}
 				</p>
 			</div>
@@ -53,27 +53,27 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ result, onRestart }) => {
 
 			<div className='space-y-4 sm:space-y-6'>
 				<div className='grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center'>
-					<div className='bg-amber-50 p-3 sm:p-4 rounded-lg'>
-						<div className='text-xl sm:text-2xl font-bold text-amber-600'>
+					<div className='bg-slate-700 border border-slate-600 p-3 sm:p-4 rounded-lg'>
+						<div className='text-xl sm:text-2xl font-bold text-emerald-400'>
 							{result.score}
 						</div>
-						<div className='text-xs sm:text-sm text-gray-600'>
+						<div className='text-xs sm:text-sm text-slate-300'>
 							Correct
 						</div>
 					</div>
-					<div className='bg-orange-50 p-3 sm:p-4 rounded-lg'>
-						<div className='text-xl sm:text-2xl font-bold text-orange-600'>
+					<div className='bg-slate-700 border border-slate-600 p-3 sm:p-4 rounded-lg'>
+						<div className='text-xl sm:text-2xl font-bold text-red-400'>
 							{result.totalQuestions - result.score}
 						</div>
-						<div className='text-xs sm:text-sm text-gray-600'>
+						<div className='text-xs sm:text-sm text-slate-300'>
 							Incorrect
 						</div>
 					</div>
-					<div className='bg-red-50 p-3 sm:p-4 rounded-lg'>
-						<div className='text-xl sm:text-2xl font-bold text-red-600'>
+					<div className='bg-slate-700 border border-slate-600 p-3 sm:p-4 rounded-lg'>
+						<div className='text-xl sm:text-2xl font-bold text-teal-400'>
 							{result.totalQuestions}
 						</div>
-						<div className='text-xs sm:text-sm text-gray-600'>
+						<div className='text-xs sm:text-sm text-slate-300'>
 							Total
 						</div>
 					</div>
@@ -81,7 +81,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ result, onRestart }) => {
 
 				<button
 					onClick={onRestart}
-					className='bg-gradient-to-r from-amber-600 to-orange-600 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg hover:from-amber-700 hover:to-orange-700 transition-all duration-200 transform hover:scale-105 w-full sm:w-auto min-h-[48px] touch-manipulation text-sm sm:text-base'
+					className='bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 transform hover:scale-105 w-full sm:w-auto min-h-[48px] touch-manipulation text-sm sm:text-base border border-emerald-500'
 				>
 					🔄 Take Quiz Again
 				</button>
