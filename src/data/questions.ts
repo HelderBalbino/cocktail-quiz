@@ -30,7 +30,7 @@ const baseQuestions: QuizQuestion[] = [
 		],
 		correctAnswer: 0,
 		explanation:
-			'A Negroni consists of equal parts gin, Campari, and sweet vermouth, garnished with an orange peel.',
+			'A Negroni consists of equal parts gin, Campari, and sweet vermouth, garnished with an orange slice.',
 	},
 	{
 		id: 5,
@@ -53,53 +53,6 @@ const baseQuestions: QuizQuestion[] = [
 		correctAnswer: 2,
 		explanation:
 			'Muddling involves gently crushing ingredients (like mint or fruit) to release their flavors and oils.',
-	},
-	{
-		id: 7,
-		question: 'Which spirit is the base of a Bloody Mary?',
-		options: ['Gin', 'Rum', 'Vodka', 'Whiskey'],
-		correctAnswer: 2,
-		explanation:
-			'A Bloody Mary is made with vodka, tomato juice, and various spices and flavorings.',
-	},
-	{
-		id: 8,
-		question: 'What is the difference between a Daiquiri and a Mojito?',
-		options: [
-			'Different spirits',
-			'Daiquiri has no mint',
-			'Mojito has no lime',
-			'They are the same',
-		],
-		correctAnswer: 1,
-		explanation:
-			'Both use rum and lime, but a Mojito includes fresh mint and soda water, while a Daiquiri does not.',
-	},
-	{
-		id: 9,
-		question: 'What type of vermouth is used in a classic Martini?',
-		options: [
-			'Sweet vermouth',
-			'Dry vermouth',
-			'Blanc vermouth',
-			'No vermouth',
-		],
-		correctAnswer: 1,
-		explanation:
-			'A classic Martini uses dry vermouth with gin (or vodka), garnished with an olive or lemon twist.',
-	},
-	{
-		id: 10,
-		question: "Which cocktail is served 'on the rocks'?",
-		options: [
-			'A cocktail served hot',
-			'A cocktail served with ice',
-			'A cocktail served without alcohol',
-			'A cocktail served in a salt-rimmed glass',
-		],
-		correctAnswer: 1,
-		explanation:
-			"'On the rocks' means served over ice cubes in a rocks glass (old fashioned glass).",
 	},
 	{
 		id: 11,
@@ -131,7 +84,7 @@ const baseQuestions: QuizQuestion[] = [
 	{
 		id: 13,
 		question:
-			'In professional bartending, what color edible paint garnish is used for a gin-based Ember Gimlet?',
+			'what color edible paint garnish is used for a gin-based Ember Gimlet?',
 		options: [
 			'Blue edible paint',
 			'Red edible paint',
@@ -273,21 +226,21 @@ const baseQuestions: QuizQuestion[] = [
 		],
 		correctAnswer: 2,
 		explanation:
-			'A Garden Collins is served in a Collins glass filled with cubed ice, which is the traditional tall glass for Collins-style cocktails.',
+			'A Garden Collins is served in a Collins or (princesa) glass filled with cubed ice, which is the traditional tall glass for Collins-style cocktails.',
 	},
 	{
 		id: 25,
 		question:
 			'How is a Garden Collins finished after shaking and straining?',
 		options: [
-			'Garnished with lime',
-			'Topped with soda water',
+			'Garnished with lime and no soda water',
+			'Garnished with a dehydrated grapefruit slice and topped with soda water',
 			'Served neat',
 			'Flamed orange peel',
 		],
 		correctAnswer: 1,
 		explanation:
-			'After whip shaking and straining into the Collins glass, a Garden Collins is topped with soda water to add effervescence and dilution.',
+			'After whip shaking and straining into the Collins glass, a Garden Collins is topped with soda water to add effervescence and dilution and Garnished with a dehydrated grapefruit slice.',
 	},
 	{
 		id: 26,
