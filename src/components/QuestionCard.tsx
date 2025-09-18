@@ -56,6 +56,13 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 								<span className='text-lg'>🎉</span>
 								<span>Excellent! Correct answer!</span>
 							</div>
+						) : selectedAnswer === null ? (
+							<div className='flex items-center gap-2 text-red-300 font-medium text-sm sm:text-base'>
+								<span className='text-lg'>⏰</span>
+								<span>
+									Time's up! Here's the correct answer:
+								</span>
+							</div>
 						) : (
 							<div className='flex items-center gap-2 text-amber-300 font-medium text-sm sm:text-base'>
 								<span className='text-lg'>📚</span>
