@@ -313,25 +313,21 @@ const baseQuestions: QuizQuestion[] = [
 		options: [
 			'Coupe glass',
 			'Martini glass',
-			'Highball glass',
+			'collins glass',
 			'Old fashioned glass',
 		],
 		correctAnswer: 2,
 		explanation:
-			'The Ruby cocktail is served in a highball glass, which provides enough space for the pre-batch, ice, and the soda topper while showcasing the beautiful color.',
+			'The Ruby cocktail is served in a collins glass, which provides enough space for the pre-batch, ice, and the soda topper while showcasing the beautiful color.',
 	},
 	{
 		id: 33,
-		question: 'Which purées are included in the Ruby cocktail?',
-		options: [
-			'Strawberry and lime',
-			'Raspberry and lemon',
-			'Blackberry and orange',
-			'Peach and lime',
-		],
+		question:
+			'Which purée is included in the prebatch for the Ruby cocktail?',
+		options: ['Strawberry', 'Raspberry', 'Blackberry', 'Peach'],
 		correctAnswer: 1,
 		explanation:
-			'The Ruby cocktail contains raspberry purée and lemon purée juice, creating a perfect balance of berry sweetness and citrus tartness.',
+			'The Ruby cocktail contains raspberry purée and lemon juice, creating a perfect balance of berry sweetness and citrus tartness.',
 	},
 	{
 		id: 34,
