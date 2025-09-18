@@ -256,6 +256,96 @@ const baseQuestions: QuizQuestion[] = [
 		explanation:
 			"A whip shake is a short, vigorous shaking technique that quickly aerates the cocktail and chills it without over-diluting. It's ideal for cocktails that will be topped with soda or other mixers, creating a light, frothy texture.",
 	},
+	{
+		id: 27,
+		question: 'What is the base spirit in a Ruby cocktail?',
+		options: ['Gin', 'Absolut Citron Vodka', 'White Rum', 'Tequila'],
+		correctAnswer: 1,
+		explanation:
+			'The Ruby cocktail is built on Absolut Citron vodka, which provides a clean, citrus-forward base that pairs beautifully with the floral and fruity elements.',
+	},
+	{
+		id: 28,
+		question: 'What type of garnish is used for the Ruby cocktail?',
+		options: ['Lemon twist', 'Rose petal', 'Mint sprig', 'Orange wheel'],
+		correctAnswer: 1,
+		explanation:
+			'The Ruby cocktail is garnished with a single rose petal, which perfectly complements the rose liqueur in the drink and enhances its floral presentation.',
+	},
+	{
+		id: 29,
+		question: 'What bitters are used in the Ruby cocktail?',
+		options: [
+			'Angostura bitters',
+			'Orange bitters',
+			'Plum bitters',
+			"Peychaud's bitters",
+		],
+		correctAnswer: 2,
+		explanation:
+			'Plum bitters are used in the Ruby cocktail (3 drops), adding depth and complexity that complements the raspberry and floral notes.',
+	},
+	{
+		id: 30,
+		question:
+			'How much Ruby pre-batch is used in the cocktail preparation?',
+		options: ['50ml', '75ml', '100ml', '125ml'],
+		correctAnswer: 2,
+		explanation:
+			'The Ruby cocktail uses 100ml of Ruby pre-batch, which contains the vodka, purées, rose liqueur, and vanilla syrup premixed for consistency.',
+	},
+	{
+		id: 31,
+		question: 'What type of soda tops the Ruby cocktail?',
+		options: [
+			'Club soda',
+			'Fever Tree orange blossom and raspberry soda',
+			'Tonic water',
+			'Ginger beer',
+		],
+		correctAnswer: 1,
+		explanation:
+			'The Ruby is topped with Fever Tree orange blossom and raspberry soda, which enhances both the floral notes from the rose liqueur and the berry flavors from the raspberry purée.',
+	},
+	{
+		id: 32,
+		question: 'What type of glass is the Ruby cocktail served in?',
+		options: [
+			'Coupe glass',
+			'Martini glass',
+			'Highball glass',
+			'Old fashioned glass',
+		],
+		correctAnswer: 2,
+		explanation:
+			'The Ruby cocktail is served in a highball glass, which provides enough space for the pre-batch, ice, and the soda topper while showcasing the beautiful color.',
+	},
+	{
+		id: 33,
+		question: 'Which purées are included in the Ruby cocktail?',
+		options: [
+			'Strawberry and lime',
+			'Raspberry and lemon',
+			'Blackberry and orange',
+			'Peach and lime',
+		],
+		correctAnswer: 1,
+		explanation:
+			'The Ruby cocktail contains raspberry purée and lemon purée juice, creating a perfect balance of berry sweetness and citrus tartness.',
+	},
+	{
+		id: 34,
+		question: 'What liqueur gives the Ruby cocktail its floral character?',
+		options: [
+			'Elderflower liqueur',
+			'Rose liqueur',
+			'Lavender liqueur',
+			'Hibiscus liqueur',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Rose liqueur is the key ingredient that gives the Ruby cocktail its distinctive floral character, making it a "floral easy drinker."',
+	},
 ];
 
 // Export shuffled questions that will be randomized each time the module is imported
