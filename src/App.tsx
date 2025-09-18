@@ -3,6 +3,7 @@ import QuestionCard from './components/QuestionCard';
 import ProgressBar from './components/ProgressBar';
 import ResultsScreen from './components/ResultsScreen';
 import StartScreen from './components/StartScreen';
+import Timer from './components/Timer';
 import { getShuffledQuestions } from './data/questions';
 import { QuizState, QuizResult } from './types/quiz';
 
@@ -19,6 +20,7 @@ function App() {
 	const [hasStarted, setHasStarted] = useState(false);
 	const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 	const [showExplanation, setShowExplanation] = useState(false);
+	const [timerKey, setTimerKey] = useState(0); // Used to reset timer for each question
 
 	const startQuiz = () => {
 		const shuffledQuestions = getShuffledQuestions();
@@ -33,6 +35,7 @@ function App() {
 		});
 		setSelectedAnswer(null);
 		setShowExplanation(false);
+		setTimerKey(0); // Reset timer for new quiz
 	};
 
 	const handleAnswerSelect = (answerIndex: number) => {
@@ -67,7 +70,22 @@ function App() {
 			}));
 			setSelectedAnswer(null);
 			setShowExplanation(false);
+			setTimerKey((prev) => prev + 1); // Reset timer for new question
 		}
+	};
+
+	const handleTimeUp = () => {
+		if (showExplanation) return; // Don't do anything if explanation is already shown
+
+		// When time runs out, mark as incorrect (no answer selected)
+		setSelectedAnswer(null);
+		setShowExplanation(true);
+
+		// Don't increment score for timeout
+		setQuizState((prev) => ({
+			...prev,
+			answers: [...prev.answers, -1], // -1 indicates timeout/no answer
+		}));
 	};
 
 	const getQuizResult = (): QuizResult => {
@@ -106,6 +124,7 @@ function App() {
 		});
 		setSelectedAnswer(null);
 		setShowExplanation(false);
+		setTimerKey(0); // Reset timer for new quiz
 	};
 
 	if (!hasStarted) {
@@ -142,6 +161,13 @@ function App() {
 				<ProgressBar
 					current={quizState.currentQuestionIndex}
 					total={questions.length}
+				/>
+
+				<Timer
+					key={timerKey}
+					duration={30}
+					onTimeUp={handleTimeUp}
+					isActive={!showExplanation}
 				/>
 
 				<QuestionCard
