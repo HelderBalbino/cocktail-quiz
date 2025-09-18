@@ -20,7 +20,7 @@ const baseQuestions: QuizQuestion[] = [
 			'A Mojito is made with white rum, sugar, lime juice, soda water, and mint.',
 	},
 	{
-		id: 4,
+		id: 2,
 		question: 'What are the three main ingredients in a Negroni?',
 		options: [
 			'Gin, Campari, Sweet Vermouth',
@@ -33,7 +33,7 @@ const baseQuestions: QuizQuestion[] = [
 			'A Negroni consists of equal parts gin, Campari, and sweet vermouth, garnished with an orange slice.',
 	},
 	{
-		id: 5,
+		id: 3,
 		question:
 			'Which cocktail is made with tequila, lime juice, and orange liqueur?',
 		options: ['Paloma', 'Margarita', 'Tequila Sunrise', 'Mexican Mule'],
@@ -42,7 +42,7 @@ const baseQuestions: QuizQuestion[] = [
 			'A Margarita is made with tequila, lime juice, and orange liqueur (like triple sec or Cointreau).',
 	},
 	{
-		id: 6,
+		id: 4,
 		question: "What does 'muddling' mean in bartending?",
 		options: [
 			'Shaking vigorously',
@@ -55,7 +55,7 @@ const baseQuestions: QuizQuestion[] = [
 			'Muddling involves gently crushing ingredients (like mint or fruit) to release their flavors and oils.',
 	},
 	{
-		id: 11,
+		id: 5,
 		question:
 			'What is the key ingredient that makes an Ember Gimlet unique?',
 		options: [
@@ -69,7 +69,7 @@ const baseQuestions: QuizQuestion[] = [
 			'An Ember Gimlet uses house-made jalapeño & dill cordial combined with vodka or gin, creating a spicy and herbaceous flavor profile.',
 	},
 	{
-		id: 12,
+		id: 6,
 		question: 'What glassware is used for an "on the rocks" Ember Gimlet?',
 		options: [
 			'Coupe glass',
@@ -82,7 +82,7 @@ const baseQuestions: QuizQuestion[] = [
 			'For an on the rocks serve, an Ember Gimlet is stirred into a rayo rock glass, while the straight up version uses a praline coupe glass.',
 	},
 	{
-		id: 13,
+		id: 7,
 		question:
 			'what color edible paint garnish is used for a gin-based Ember Gimlet?',
 		options: [
@@ -96,7 +96,7 @@ const baseQuestions: QuizQuestion[] = [
 			'Green edible paint is used as garnish for gin-based Ember Gimlets, while blue edible paint is used for vodka-based versions.',
 	},
 	{
-		id: 14,
+		id: 8,
 		question: 'What is the standard ratio for an Ember Gimlet recipe?',
 		options: [
 			'2:1 spirit to cordial',
@@ -109,7 +109,7 @@ const baseQuestions: QuizQuestion[] = [
 			'An Ember Gimlet uses equal parts (50ml each) of Bone Idyll Vodka or Gin and house-made jalapeño & dill cordial.',
 	},
 	{
-		id: 15,
+		id: 9,
 		question: 'Which technique is used to prepare an Ember Gimlet?',
 		options: [
 			'Shaken with ice',
@@ -122,7 +122,7 @@ const baseQuestions: QuizQuestion[] = [
 			'An Ember Gimlet is stirred in a mixing glass before being served either straight up in a praline coupe or on the rocks in a rayo rock glass.',
 	},
 	{
-		id: 16,
+		id: 10,
 		question: 'What type of glass is used for an English Pear Bellini?',
 		options: ['Coupe glass', 'Wine glass', 'Flute glass', 'Highball glass'],
 		correctAnswer: 2,
@@ -130,7 +130,7 @@ const baseQuestions: QuizQuestion[] = [
 			'An English Pear Bellini is built directly into a flute glass, which is the traditional glassware for sparkling wine cocktails.',
 	},
 	{
-		id: 17,
+		id: 11,
 		question:
 			'What is the main sparkling wine used in an English Pear Bellini?',
 		options: ['Champagne', 'Cava', 'Prosecco', 'Crémant'],
@@ -139,7 +139,7 @@ const baseQuestions: QuizQuestion[] = [
 			'An English Pear Bellini uses 90ml of Prosecco as the sparkling wine component, topped over the pear and elderflower purée mix.',
 	},
 	{
-		id: 18,
+		id: 12,
 		question:
 			'How much pear & elderflower purée mix is used in an English Pear Bellini?',
 		options: ['25ml', '35ml', '45ml', '50ml'],
@@ -148,7 +148,7 @@ const baseQuestions: QuizQuestion[] = [
 			'An English Pear Bellini uses exactly 35ml of pear & elderflower purée mix, which is then topped with 90ml of Prosecco.',
 	},
 	{
-		id: 19,
+		id: 13,
 		question:
 			'What is the proper mixing technique for an English Pear Bellini?',
 		options: [
@@ -162,7 +162,7 @@ const baseQuestions: QuizQuestion[] = [
 			'After adding the pear & elderflower purée and topping with Prosecco, an English Pear Bellini should be stirred gently with a bar spoon to preserve the bubbles.',
 	},
 	{
-		id: 20,
+		id: 14,
 		question:
 			'What flavor profile does elderflower add to the English Pear Bellini?',
 		options: [
@@ -176,7 +176,7 @@ const baseQuestions: QuizQuestion[] = [
 			'Elderflower provides a delicate floral and sweet flavor that complements the pear purée, creating an elegant and aromatic cocktail profile.',
 	},
 	{
-		id: 21,
+		id: 15,
 		question: 'What type of gin is used in a Garden Collins?',
 		options: [
 			'London Dry Gin',
@@ -189,7 +189,7 @@ const baseQuestions: QuizQuestion[] = [
 			'A Garden Collins uses 50ml of Malfy Rosa Grapefruit Gin, which provides the citrus and botanical base for this refreshing cocktail.',
 	},
 	{
-		id: 22,
+		id: 16,
 		question: 'What is the ratio of Garden Collins Mix to gin?',
 		options: [
 			'2:1 mix to gin',
@@ -202,7 +202,7 @@ const baseQuestions: QuizQuestion[] = [
 			'A Garden Collins uses equal parts (50ml each) of Garden Collins Mix and Malfy Rosa Grapefruit Gin for perfect balance.',
 	},
 	{
-		id: 23,
+		id: 17,
 		question:
 			'What cocktail technique is used to prepare a Garden Collins?',
 		options: [
@@ -216,7 +216,7 @@ const baseQuestions: QuizQuestion[] = [
 			'A Garden Collins is prepared using the whip shake technique - shaken with cubed ice and strained into a Collins glass filled with fresh cubed ice.',
 	},
 	{
-		id: 24,
+		id: 18,
 		question: 'What glassware is used for serving a Garden Collins?',
 		options: [
 			'Rocks glass',
@@ -229,7 +229,7 @@ const baseQuestions: QuizQuestion[] = [
 			'A Garden Collins is served in a Collins or (princesa) glass filled with cubed ice, which is the traditional tall glass for Collins-style cocktails.',
 	},
 	{
-		id: 25,
+		id: 19,
 		question:
 			'How is a Garden Collins finished after shaking and straining?',
 		options: [
@@ -243,7 +243,7 @@ const baseQuestions: QuizQuestion[] = [
 			'After whip shaking and straining into the Collins glass, a Garden Collins is topped with soda water to add effervescence and dilution and Garnished with a dehydrated grapefruit slice.',
 	},
 	{
-		id: 26,
+		id: 20,
 		question:
 			'What is a "whip shake" and why is it used in cocktail preparation?',
 		options: [
@@ -257,7 +257,7 @@ const baseQuestions: QuizQuestion[] = [
 			"A whip shake is a short, vigorous shaking technique that quickly aerates the cocktail and chills it without over-diluting. It's ideal for cocktails that will be topped with soda or other mixers, creating a light, frothy texture.",
 	},
 	{
-		id: 27,
+		id: 21,
 		question: 'What is the base spirit in a Ruby cocktail?',
 		options: ['Gin', 'Absolut Citron Vodka', 'White Rum', 'Tequila'],
 		correctAnswer: 1,
@@ -265,7 +265,7 @@ const baseQuestions: QuizQuestion[] = [
 			'The Ruby cocktail is built on Absolut Citron vodka, which provides a clean, citrus-forward base that pairs beautifully with the floral and fruity elements.',
 	},
 	{
-		id: 28,
+		id: 22,
 		question: 'What type of garnish is used for the Ruby cocktail?',
 		options: ['Lemon twist', 'Rose petal', 'Mint sprig', 'Orange wheel'],
 		correctAnswer: 1,
@@ -273,7 +273,7 @@ const baseQuestions: QuizQuestion[] = [
 			'The Ruby cocktail is garnished with a single rose petal, which perfectly complements the rose liqueur in the drink and enhances its floral presentation.',
 	},
 	{
-		id: 29,
+		id: 23,
 		question: 'What bitters are used in the Ruby cocktail?',
 		options: [
 			'Angostura bitters',
@@ -286,7 +286,7 @@ const baseQuestions: QuizQuestion[] = [
 			'Plum bitters are used in the Ruby cocktail (3 drops), adding depth and complexity that complements the raspberry and floral notes.',
 	},
 	{
-		id: 30,
+		id: 24,
 		question:
 			'How much Ruby pre-batch is used in the cocktail preparation?',
 		options: ['50ml', '75ml', '100ml', '125ml'],
@@ -295,7 +295,7 @@ const baseQuestions: QuizQuestion[] = [
 			'The Ruby cocktail uses 100ml of Ruby pre-batch, which contains the vodka, purées, rose liqueur, and vanilla syrup premixed for consistency.',
 	},
 	{
-		id: 31,
+		id: 25,
 		question: 'What type of soda tops the Ruby cocktail?',
 		options: [
 			'Club soda',
@@ -308,7 +308,7 @@ const baseQuestions: QuizQuestion[] = [
 			'The Ruby is topped with Fever Tree orange blossom and raspberry soda, which enhances both the floral notes from the rose liqueur and the berry flavors from the raspberry purée.',
 	},
 	{
-		id: 32,
+		id: 26,
 		question: 'What type of glass is the Ruby cocktail served in?',
 		options: [
 			'Coupe glass',
@@ -321,7 +321,7 @@ const baseQuestions: QuizQuestion[] = [
 			'The Ruby cocktail is served in a collins glass, which provides enough space for the pre-batch, ice, and the soda topper while showcasing the beautiful color.',
 	},
 	{
-		id: 33,
+		id: 27,
 		question:
 			'Which purée is included in the prebatch for the Ruby cocktail?',
 		options: ['Strawberry', 'Raspberry', 'Blackberry', 'Peach'],
@@ -330,7 +330,7 @@ const baseQuestions: QuizQuestion[] = [
 			'The Ruby cocktail contains raspberry purée and lemon juice, creating a perfect balance of berry sweetness and citrus tartness.',
 	},
 	{
-		id: 34,
+		id: 28,
 		question: 'What liqueur gives the Ruby cocktail its floral character?',
 		options: [
 			'Elderflower liqueur',
