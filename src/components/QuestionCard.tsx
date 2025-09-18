@@ -54,9 +54,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 						{selectedAnswer === question.correctAnswer ? (
 							<div className='flex items-center gap-2 text-emerald-300 font-medium text-sm sm:text-base'>
 								<span className='text-lg'>🎉</span>
-								<span>
-									Excellent! You're a cocktail connoisseur!
-								</span>
+								<span>Excellent! Correct answer!</span>
 							</div>
 						) : (
 							<div className='flex items-center gap-2 text-amber-300 font-medium text-sm sm:text-base'>
