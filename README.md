@@ -36,36 +36,57 @@
 ## 🎯 Overview
 
 **Cocktail Quiz** is a modern, interactive web application designed to test and
-enhance your knowledge of cocktails, spirits, and bartending techniques. Built
-with cutting-edge technologies, it offers an engaging user experience with
-instant feedback and comprehensive scoring.
+enhance your knowledge of professional cocktails, spirits, and bartending
+techniques. Built with cutting-edge technologies and featuring a sophisticated
+dark theme design, it offers an engaging mobile-first experience with timed
+challenges and comprehensive feedback.
 
 ### Why This Project?
 
--   🎓 **Educational**: Learn about cocktail recipes, spirits, and mixology
--   🎮 **Interactive**: Engaging quiz format with immediate feedback
--   📱 **Responsive**: Perfect experience on all devices
--   🏆 **Competitive**: Score tracking and performance rankings
--   🚀 **Modern**: Built with latest web technologies
+-   🎓 **Professional Education**: Learn 28 curated cocktail recipes from
+    professional bartending
+-   🎮 **Timed Challenges**: 30-second timer per question with visual countdown
+-   📱 **Mobile-Optimized**: Dark theme design tailored specifically for mobile
+    users
+-   🏆 **Competitive**: Score tracking and performance rankings with instant
+    feedback
+-   🔄 **Always Fresh**: Randomized question order for unique experience each
+    time
+-   🚀 **Modern**: Built with latest web technologies and best practices
 
 ## ✨ Features
 
 ### Core Functionality
 
--   🧠 **10 Curated Questions** covering cocktail knowledge
+-   🧠 **28 Professional Questions** covering extensive cocktail knowledge
 -   🎯 **Multiple Choice Format** with 4 options per question
+-   ⏱️ **30-Second Timer** per question with automatic timeout handling
 -   📊 **Real-time Progress Tracking** with visual indicators
--   💡 **Instant Explanations** after each answer
+-   💡 **Instant Explanations** after each answer (correct, incorrect, or
+    timeout)
 -   🏅 **Comprehensive Scoring System** with performance tiers
+-   🔄 **Randomized Questions** for unique experience each time
 -   🔄 **Quiz Restart Capability** for multiple attempts
+
+### Professional Content
+
+-   � **Signature Cocktails** including Ember Gimlet, Garden Collins, and Ruby
+-   🥃 **Classic Cocktails** covering Mojito, Negroni, and Margarita
+    fundamentals
+-   🍾 **Sparkling Cocktails** featuring English Pear Bellini techniques
+-   🧑‍🍳 **Bartending Techniques** including muddling, whip shaking, and mixing
+    methods
+-   📏 **Precise Measurements** and professional ratios
+-   🎨 **Garnish Knowledge** including edible paints and presentation
 
 ### User Experience
 
--   🎨 **Modern UI/UX** with gradient backgrounds and smooth animations
--   📱 **Fully Responsive Design** for desktop, tablet, and mobile
--   ⚡ **Lightning Fast** powered by Vite
--   🎭 **Interactive Feedback** with color-coded answers
+-   🌙 **Dark Theme Design** with elegant slate and emerald color palette
+-   📱 **Mobile-First Design** optimized for touch devices
+-   ⚡ **Lightning Fast** powered by Vite with hot module replacement
+-   🎭 **Interactive Feedback** with color-coded answers and timer urgency
 -   🚀 **Smooth Transitions** between questions and screens
+-   ⏰ **Visual Timer** with color-coded urgency states (green → yellow → red)
 
 ## 📸 Screenshots
 
@@ -151,21 +172,23 @@ cocktail-quiz/
 ├── 📁 public/              # Static assets
 ├── 📁 src/
 │   ├── 📁 components/      # React components
-│   │   ├── QuestionCard.tsx   # Individual question display
+│   │   ├── QuestionCard.tsx   # Individual question display with timer integration
 │   │   ├── ProgressBar.tsx    # Progress tracking component
 │   │   ├── ResultsScreen.tsx  # Final results display
-│   │   └── StartScreen.tsx    # Welcome/start screen
+│   │   ├── StartScreen.tsx    # Welcome/start screen with feature descriptions
+│   │   └── Timer.tsx          # 30-second countdown timer with visual feedback
 │   ├── 📁 data/
-│   │   └── questions.ts       # Quiz questions database
+│   │   └── questions.ts       # 28 professional cocktail questions with randomization
 │   ├── 📁 types/
 │   │   └── quiz.ts           # TypeScript type definitions
-│   ├── App.tsx               # Main application component
+│   ├── App.tsx               # Main application component with timer logic
 │   ├── main.tsx              # Application entry point
-│   └── index.css             # Global styles (Tailwind)
+│   └── index.css             # Global styles (Tailwind + dark theme)
 ├── 📄 package.json           # Dependencies and scripts
 ├── 📄 vite.config.ts         # Vite configuration
 ├── 📄 tailwind.config.js     # Tailwind CSS configuration
 ├── 📄 tsconfig.json          # TypeScript configuration
+├── 📄 vercel.json            # Vercel deployment configuration
 └── 📄 README.md              # Project documentation
 ```
 
@@ -173,12 +196,23 @@ cocktail-quiz/
 
 ### Question Categories
 
-Our carefully curated questions cover:
+Our carefully curated 28 professional questions cover:
 
--   🥃 **Spirits & Liqueurs** - Base spirits and flavor profiles
--   🍹 **Classic Cocktails** - Traditional recipes and techniques
--   🍸 **Modern Mixology** - Contemporary bartending methods
--   📚 **Cocktail Knowledge** - History, terminology, and culture
+-   🥃 **Signature Cocktails** - Ember Gimlet, Garden Collins, Ruby cocktail
+    recipes
+-   🍹 **Classic Cocktails** - Mojito, Negroni, Margarita fundamentals
+-   🍾 **Sparkling Cocktails** - English Pear Bellini techniques and knowledge
+-   🧑‍� **Bartending Techniques** - Muddling, whip shaking, stirring methods
+-   📏 **Professional Measurements** - Precise ratios and serving specifications
+-   🎨 **Garnish & Presentation** - Edible paints, glassware, and styling
+
+### Timer System
+
+-   ⏱️ **30-Second Timer** per question with visual countdown
+-   � **Green Phase** (30-21s): Comfortable thinking time
+-   🟡 **Yellow Phase** (20-11s): Moderate urgency
+-   🔴 **Red Phase** (10-1s): High urgency warning
+-   ⏰ **Auto-timeout** shows correct answer and explanation
 
 ### Scoring Tiers
 
@@ -196,7 +230,9 @@ Our carefully curated questions cover:
 -   **Educational Explanations**: Learn from every question with detailed
     explanations
 -   **Performance Tracking**: Monitor your progress with a dynamic progress bar
--   **Adaptive UI**: Responsive design that works seamlessly across all devices
+-   **Adaptive UI**: Dark theme responsive design optimized for mobile devices
+-   **Randomized Questions**: Fisher-Yates shuffle ensures unique experience
+    each time
 
 ## 🔧 Development
 
