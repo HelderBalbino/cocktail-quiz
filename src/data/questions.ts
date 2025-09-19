@@ -342,6 +342,100 @@ const baseQuestions: QuizQuestion[] = [
 		explanation:
 			'Rose liqueur is the key ingredient that gives the Ruby cocktail its distinctive floral character, making it a "floral easy drinker."',
 	},
+	{
+		id: 29,
+		question: 'What type of gin is used in the Sloegasm cocktail?',
+		options: [
+			'London Dry Gin',
+			'Plymouth Sloe Gin',
+			'Hendricks Gin',
+			'Bombay Sapphire',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Plymouth Sloe Gin is the base spirit for the Sloegasm cocktail, providing the characteristic sloe berry flavor and deep red color.',
+	},
+	{
+		id: 30,
+		question: 'Which liqueur adds berry sweetness to the Sloegasm?',
+		options: ['Cointreau', 'Chambord', 'Crème de Cassis', 'Grand Marnier'],
+		correctAnswer: 1,
+		explanation:
+			'Chambord, a premium black raspberry liqueur, adds rich berry sweetness and complexity to the Sloegasm cocktail.',
+	},
+	{
+		id: 31,
+		question: 'What type of wine is included in the Sloegasm recipe?',
+		options: [
+			'Embrujo Verdejo white wine',
+			'Pinot Grigio',
+			'Sauvignon Blanc',
+			'Chardonnay',
+		],
+		correctAnswer: 0,
+		explanation:
+			'Embrujo Verdejo white wine is used in the Sloegasm, adding crisp, fresh notes and lightness to balance the rich berry flavors.',
+	},
+	{
+		id: 32,
+		question: 'How should the Ratafia be added when mixing the Sloegasm?',
+		options: [
+			'Pour directly into the keg',
+			'Pour through a j-cloth',
+			'Shake with ice first',
+			'Heat before adding',
+		],
+		correctAnswer: 1,
+		explanation:
+			'The Ratafia should be poured through a j-cloth when adding to the Cornelius keg to strain out any sediment or particles.',
+	},
+	{
+		id: 33,
+		question: 'What equipment is used for batching the Sloegasm cocktail?',
+		options: [
+			'Large mixing bowl',
+			'Cornelius keg',
+			'Wine barrel',
+			'Stainless steel tank',
+		],
+		correctAnswer: 1,
+		explanation:
+			'A Cornelius keg is used for batching the Sloegasm, allowing for pressurization with gas and proper mixing of all ingredients.',
+	},
+	{
+		id: 34,
+		question: 'How long should the Sloegasm keg rest in the cellar?',
+		options: ['2 hours', '6 hours', 'Overnight', '3 days'],
+		correctAnswer: 2,
+		explanation:
+			'The Sloegasm keg should be left in the cellar overnight, with hourly shaking when possible to ensure proper integration of all ingredients.',
+	},
+	{
+		id: 35,
+		question: 'What sparkling water is used in the Sloegasm recipe?',
+		options: [
+			'Perrier',
+			'San Pellegrino',
+			'Belu Sparkling Water',
+			'Fever Tree',
+		],
+		correctAnswer: 2,
+		explanation:
+			'Belu Sparkling Water is specifically used in the Sloegasm recipe to provide the carbonation and dilution needed for the perfect serve.',
+	},
+	{
+		id: 36,
+		question: 'What type of bitters are used in the Sloegasm cocktail?',
+		options: [
+			'Angostura bitters',
+			'Orange bitters',
+			'Lemon Bitter',
+			"Peychaud's bitters",
+		],
+		correctAnswer: 2,
+		explanation:
+			'Lemon Bitter is used in the Sloegasm to add citrus complexity and balance the sweet berry flavors with aromatic depth.',
+	},
 ];
 
 // Export shuffled questions that will be randomized each time the module is imported
