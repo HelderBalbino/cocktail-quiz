@@ -165,7 +165,7 @@ function App() {
 
 				<Timer
 					key={timerKey}
-					duration={30}
+					duration={20}
 					onTimeUp={handleTimeUp}
 					isActive={!showExplanation}
 				/>
