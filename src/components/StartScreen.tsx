@@ -31,7 +31,7 @@ const StartScreen: React.FC<StartScreenProps> = ({
 					</h3>
 					<ul className='text-slate-300 space-y-1 text-sm sm:text-base'>
 						<li>📝 {totalQuestions} multiple choice questions</li>
-						<li>⏱️ 30 seconds per question - think fast!</li>
+						<li>⏱️ 20 seconds per question - think fast!</li>
 						<li>💡 Explanations provided after each question</li>
 						<li>🏆 Get your score and see how you rank</li>
 					</ul>
