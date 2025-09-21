@@ -2,68 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Confetti falling animation - more natural rain-like fall */
-@keyframes confetti-rain {
+/* Confetti explosion animation - burst outward from center */
+@keyframes confetti-explosion {
 	0% {
-		transform: translateY(-10px) rotate(0deg);
+		transform: translate(0, 0) rotate(0deg) scale(0);
 		opacity: 1;
 	}
 	10% {
-		opacity: 1;
-	}
-	90% {
+		transform: translate(var(--x-direction), var(--y-direction))
+			rotate(90deg) scale(1);
 		opacity: 1;
 	}
 	100% {
-		transform: translateY(100vh) rotate(180deg);
+		transform: translate(
+				calc(var(--x-direction) * 3),
+				calc(var(--y-direction) * 2 + 100px)
+			)
+			rotate(360deg) scale(0.5);
 		opacity: 0;
 	}
 }
 
-/* Individual confetti pieces with different falling patterns */
-@keyframes confetti-rain-1 {
+/* Alternative explosion patterns for variety */
+@keyframes confetti-burst-1 {
 	0% {
-		transform: translateY(-10px) translateX(0px) rotate(0deg);
+		transform: translate(0, 0) rotate(0deg) scale(1);
 		opacity: 1;
 	}
-	50% {
-		transform: translateY(50vh) translateX(10px) rotate(90deg);
+	25% {
+		transform: translate(var(--x-direction), calc(var(--y-direction) * 0.5))
+			rotate(90deg) scale(1.2);
 		opacity: 1;
 	}
 	100% {
-		transform: translateY(100vh) translateX(-5px) rotate(180deg);
+		transform: translate(
+				calc(var(--x-direction) * 2.5),
+				calc(var(--y-direction) * 1.5 + 80px)
+			)
+			rotate(270deg) scale(0);
 		opacity: 0;
 	}
 }
 
-@keyframes confetti-rain-2 {
+@keyframes confetti-burst-2 {
 	0% {
-		transform: translateY(-10px) translateX(0px) rotate(0deg);
+		transform: translate(0, 0) rotate(0deg) scale(0.8);
 		opacity: 1;
 	}
-	50% {
-		transform: translateY(50vh) translateX(-8px) rotate(120deg);
+	30% {
+		transform: translate(calc(var(--x-direction) * 0.8), var(--y-direction))
+			rotate(180deg) scale(1.5);
 		opacity: 1;
 	}
 	100% {
-		transform: translateY(100vh) translateX(12px) rotate(240deg);
+		transform: translate(
+				calc(var(--x-direction) * 3.2),
+				calc(var(--y-direction) * 2.2 + 120px)
+			)
+			rotate(450deg) scale(0.2);
 		opacity: 0;
 	}
 }
 
-@keyframes confetti-rain-3 {
+@keyframes confetti-burst-3 {
 	0% {
-		transform: translateY(-10px) translateX(0px) rotate(0deg);
+		transform: translate(0, 0) rotate(0deg) scale(1.2);
 		opacity: 1;
 	}
-	50% {
-		transform: translateY(50vh) translateX(5px) rotate(180deg);
+	20% {
+		transform: translate(
+				calc(var(--x-direction) * 1.2),
+				calc(var(--y-direction) * 0.8)
+			)
+			rotate(120deg) scale(1);
 		opacity: 1;
 	}
 	100% {
-		transform: translateY(100vh) translateX(-10px) rotate(360deg);
+		transform: translate(
+				calc(var(--x-direction) * 2.8),
+				calc(var(--y-direction) * 1.8 + 90px)
+			)
+			rotate(320deg) scale(0.3);
 		opacity: 0;
 	}
+}
+
+/* Triangle shape for confetti variety */
+.triangle {
+	width: 0 !important;
+	height: 0 !important;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-bottom: 6px solid;
+	border-bottom-color: inherit;
+	background-color: transparent !important;
 }
 
 /* Gentle shake animation for correct answers */
