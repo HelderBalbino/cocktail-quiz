@@ -45,7 +45,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 			// Reset confetti after animation completes
 			const confettiTimer = setTimeout(() => {
 				setShowConfetti(false);
-			}, 2000);
+			}, 2800);
 
 			return () => {
 				clearTimeout(shakeTimer);
@@ -59,7 +59,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 			<Confetti
 				key={confettiKey}
 				isActive={showConfetti}
-				duration={2000}
+				duration={2800}
 			/>
 
 			<h2 className='text-lg sm:text-xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 leading-tight'>
