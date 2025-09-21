@@ -40,13 +40,13 @@ const Confetti: React.FC<ConfettiProps> = ({ isActive, duration = 2500 }) => {
 
 	useEffect(() => {
 		if (isActive) {
-			// Generate explosion particles radiating outward from center
+			// Generate MASSIVE explosion particles radiating outward from center
 			const newParticles: Particle[] = Array.from(
-				{ length: 60 },
+				{ length: 120 }, // Double the particles for bigger explosion
 				(_, i) => {
 					// Create circular spread pattern
-					const angle = (i / 60) * 360; // Distribute evenly in circle
-					const distance = 50 + Math.random() * 100; // Random distance from center
+					const angle = (i / 120) * 360; // Distribute evenly in circle
+					const distance = 100 + Math.random() * 200; // Much larger distance (was 50-150, now 100-300)
 					const radians = (angle * Math.PI) / 180;
 
 					return {
@@ -55,11 +55,11 @@ const Confetti: React.FC<ConfettiProps> = ({ isActive, duration = 2500 }) => {
 						y: 50, // Start from center
 						xDirection: Math.cos(radians) * distance,
 						yDirection: Math.sin(radians) * distance,
-						animationDelay: Math.random() * 300, // Quick burst
+						animationDelay: Math.random() * 400, // Slightly longer burst
 						color: colors[
 							Math.floor(Math.random() * colors.length)
 						],
-						size: Math.random() * 4 + 3, // 3-7px
+						size: Math.random() * 6 + 4, // Bigger particles: 4-10px (was 3-7px)
 						shape: shapes[
 							Math.floor(Math.random() * shapes.length)
 						],
@@ -108,7 +108,7 @@ const Confetti: React.FC<ConfettiProps> = ({ isActive, duration = 2500 }) => {
 							height: `${particle.size}px`,
 							backgroundColor: particle.color,
 							animationDelay: `${particle.animationDelay}ms`,
-							animation: `confetti-burst-${particle.animationType} 2s ease-out forwards`,
+							animation: `confetti-burst-${particle.animationType} 2.8s ease-out forwards`,
 							'--x-direction': `${particle.xDirection}px`,
 							'--y-direction': `${particle.yDirection}px`,
 						} as React.CSSProperties
