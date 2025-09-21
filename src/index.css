@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Confetti explosion animation - burst outward from center */
+/* Confetti explosion animation - MASSIVE burst outward from center */
 @keyframes confetti-explosion {
 	0% {
 		transform: translate(0, 0) rotate(0deg) scale(0);
@@ -10,20 +10,88 @@
 	}
 	10% {
 		transform: translate(var(--x-direction), var(--y-direction))
-			rotate(90deg) scale(1);
+			rotate(90deg) scale(1.5);
 		opacity: 1;
 	}
 	100% {
 		transform: translate(
-				calc(var(--x-direction) * 3),
-				calc(var(--y-direction) * 2 + 100px)
+				calc(var(--x-direction) * 5),
+				calc(var(--y-direction) * 3 + 200px)
 			)
-			rotate(360deg) scale(0.5);
+			rotate(360deg) scale(0.8);
 		opacity: 0;
 	}
 }
 
-/* Alternative explosion patterns for variety */
+/* Alternative explosion patterns for BIGGER variety */
+@keyframes confetti-burst-1 {
+	0% {
+		transform: translate(0, 0) rotate(0deg) scale(1);
+		opacity: 1;
+	}
+	25% {
+		transform: translate(
+				calc(var(--x-direction) * 1.5),
+				calc(var(--y-direction) * 0.8)
+			)
+			rotate(120deg) scale(1.8);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(
+				calc(var(--x-direction) * 4.5),
+				calc(var(--y-direction) * 2.5 + 180px)
+			)
+			rotate(300deg) scale(0.6);
+		opacity: 0;
+	}
+}
+
+@keyframes confetti-burst-2 {
+	0% {
+		transform: translate(0, 0) rotate(0deg) scale(0.8);
+		opacity: 1;
+	}
+	30% {
+		transform: translate(
+				calc(var(--x-direction) * 1.2),
+				calc(var(--y-direction) * 1.1)
+			)
+			rotate(200deg) scale(2);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(
+				calc(var(--x-direction) * 5.5),
+				calc(var(--y-direction) * 3.2 + 220px)
+			)
+			rotate(520deg) scale(0.4);
+		opacity: 0;
+	}
+}
+
+@keyframes confetti-burst-3 {
+	0% {
+		transform: translate(0, 0) rotate(0deg) scale(1.2);
+		opacity: 1;
+	}
+	20% {
+		transform: translate(
+				calc(var(--x-direction) * 1.8),
+				calc(var(--y-direction) * 0.9)
+			)
+			rotate(150deg) scale(1.6);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(
+				calc(var(--x-direction) * 4.8),
+				calc(var(--y-direction) * 2.8 + 190px)
+			)
+			rotate(400deg) scale(0.5);
+		opacity: 0;
+	}
+} /* Alternative explosion patterns for variety */
 @keyframes confetti-burst-1 {
 	0% {
 		transform: translate(0, 0) rotate(0deg) scale(1);
@@ -87,13 +155,13 @@
 	}
 }
 
-/* Triangle shape for confetti variety */
+/* Triangle shape for confetti variety - BIGGER SIZE */
 .triangle {
 	width: 0 !important;
 	height: 0 !important;
-	border-left: 3px solid transparent;
-	border-right: 3px solid transparent;
-	border-bottom: 6px solid;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 10px solid;
 	border-bottom-color: inherit;
 	background-color: transparent !important;
 }
