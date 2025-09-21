@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { QuizQuestion } from '../types/quiz';
+import Confetti from './Confetti';
 
 interface QuestionCardProps {
 	question: QuizQuestion;
@@ -14,8 +15,53 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 	onAnswerSelect,
 	showExplanation,
 }) => {
+	const [showConfetti, setShowConfetti] = useState(false);
+	const [shakeCorrectAnswer, setShakeCorrectAnswer] = useState(false);
+	const [confettiKey, setConfettiKey] = useState(0);
+
+	// Reset confetti state when moving to new question
+	useEffect(() => {
+		setShowConfetti(false);
+		setShakeCorrectAnswer(false);
+	}, [question.id]);
+
+	// Trigger animations when correct answer is revealed
+	useEffect(() => {
+		if (showExplanation && selectedAnswer === question.correctAnswer) {
+			// Force new confetti animation by updating key
+			setConfettiKey((prev) => prev + 1);
+
+			// Trigger confetti
+			setShowConfetti(true);
+
+			// Trigger shake animation for correct answer
+			setShakeCorrectAnswer(true);
+
+			// Reset shake animation after it completes
+			const shakeTimer = setTimeout(() => {
+				setShakeCorrectAnswer(false);
+			}, 600);
+
+			// Reset confetti after animation completes
+			const confettiTimer = setTimeout(() => {
+				setShowConfetti(false);
+			}, 2500);
+
+			return () => {
+				clearTimeout(shakeTimer);
+				clearTimeout(confettiTimer);
+			};
+		}
+	}, [showExplanation, selectedAnswer, question.correctAnswer]);
 	return (
 		<div className='bg-slate-800 border border-slate-700 rounded-lg shadow-2xl p-4 sm:p-6 max-w-2xl mx-auto'>
+			{/* Confetti Animation */}
+			<Confetti
+				key={confettiKey}
+				isActive={showConfetti}
+				duration={2500}
+			/>
+
 			<h2 className='text-lg sm:text-xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 leading-tight'>
 				{question.question}
 			</h2>
@@ -29,13 +75,20 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 							selectedAnswer === index
 								? showExplanation
 									? index === question.correctAnswer
-										? 'bg-emerald-900 border-emerald-500 text-emerald-100'
+										? 'bg-emerald-900 border-emerald-500 text-emerald-100 animate-success-glow'
 										: 'bg-red-900 border-red-500 text-red-100'
 									: 'bg-teal-900 border-teal-500 text-teal-100'
 								: showExplanation &&
 								  index === question.correctAnswer
-								? 'bg-emerald-900 border-emerald-500 text-emerald-100'
+								? 'bg-emerald-900 border-emerald-500 text-emerald-100 animate-success-glow'
 								: 'bg-slate-700 border-slate-600 text-slate-200 hover:bg-slate-600 active:bg-slate-500'
+						} ${
+							// Add shake animation to correct answer when revealed
+							showExplanation &&
+							index === question.correctAnswer &&
+							shakeCorrectAnswer
+								? 'animate-gentle-shake'
+								: ''
 						}`}
 						disabled={showExplanation}
 					>
