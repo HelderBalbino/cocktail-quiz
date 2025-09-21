@@ -7,10 +7,14 @@ interface ConfettiProps {
 
 interface Particle {
 	id: number;
-	left: number;
+	x: number;
+	y: number;
+	xDirection: number;
+	yDirection: number;
 	animationDelay: number;
 	color: string;
 	size: number;
+	shape: string;
 	animationType: number;
 }
 
@@ -31,26 +35,44 @@ const Confetti: React.FC<ConfettiProps> = ({ isActive, duration = 2500 }) => {
 		'#ffd23f', // yellow-400
 	];
 
+	// Different shapes for variety
+	const shapes = ['square', 'circle', 'triangle'];
+
 	useEffect(() => {
 		if (isActive) {
-			// Generate new particles with varied properties for rain effect
+			// Generate explosion particles radiating outward from center
 			const newParticles: Particle[] = Array.from(
-				{ length: 40 },
-				(_, i) => ({
-					id: Date.now() + i, // Unique ID to ensure fresh animation
-					left: Math.random() * 100,
-					animationDelay: Math.random() * 1000, // Spread out over 1 second
-					color: colors[Math.floor(Math.random() * colors.length)],
-					size: Math.random() * 3 + 2, // Random size between 2-5px
-					animationType: Math.floor(Math.random() * 3) + 1, // 1, 2, or 3
-				}),
+				{ length: 60 },
+				(_, i) => {
+					// Create circular spread pattern
+					const angle = (i / 60) * 360; // Distribute evenly in circle
+					const distance = 50 + Math.random() * 100; // Random distance from center
+					const radians = (angle * Math.PI) / 180;
+
+					return {
+						id: Date.now() + i,
+						x: 50, // Start from center
+						y: 50, // Start from center
+						xDirection: Math.cos(radians) * distance,
+						yDirection: Math.sin(radians) * distance,
+						animationDelay: Math.random() * 300, // Quick burst
+						color: colors[
+							Math.floor(Math.random() * colors.length)
+						],
+						size: Math.random() * 4 + 3, // 3-7px
+						shape: shapes[
+							Math.floor(Math.random() * shapes.length)
+						],
+						animationType: Math.floor(Math.random() * 3) + 1,
+					};
+				},
 			);
 
 			setParticles(newParticles);
 			setShowConfetti(true);
-			setAnimationKey((prev) => prev + 1); // Force re-render for new animation
+			setAnimationKey((prev) => prev + 1);
 
-			// Hide confetti after duration
+			// Hide confetti after explosion
 			const timer = setTimeout(() => {
 				setShowConfetti(false);
 			}, duration);
@@ -71,15 +93,26 @@ const Confetti: React.FC<ConfettiProps> = ({ isActive, duration = 2500 }) => {
 			{particles.map((particle) => (
 				<div
 					key={particle.id}
-					className='absolute opacity-90 rounded-sm'
-					style={{
-						left: `${particle.left}%`,
-						width: `${particle.size}px`,
-						height: `${particle.size}px`,
-						backgroundColor: particle.color,
-						animationDelay: `${particle.animationDelay}ms`,
-						animation: `confetti-rain-${particle.animationType} 2.5s ease-out forwards`,
-					}}
+					className={`absolute opacity-90 ${
+						particle.shape === 'circle'
+							? 'rounded-full'
+							: particle.shape === 'triangle'
+							? 'triangle'
+							: 'rounded-sm'
+					}`}
+					style={
+						{
+							left: `${particle.x}%`,
+							top: `${particle.y}%`,
+							width: `${particle.size}px`,
+							height: `${particle.size}px`,
+							backgroundColor: particle.color,
+							animationDelay: `${particle.animationDelay}ms`,
+							animation: `confetti-burst-${particle.animationType} 2s ease-out forwards`,
+							'--x-direction': `${particle.xDirection}px`,
+							'--y-direction': `${particle.yDirection}px`,
+						} as React.CSSProperties
+					}
 				/>
 			))}
 		</div>
