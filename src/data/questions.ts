@@ -436,6 +436,160 @@ const baseQuestions: QuizQuestion[] = [
 		explanation:
 			'Lemon Bitter is used in the Sloegasm to add citrus complexity and balance the sweet berry flavors with aromatic depth.',
 	},
+	{
+		id: 37,
+		question: 'What is the main botanical that defines gin?',
+		options: [
+			'Coriander',
+			'Juniper berries',
+			'Angelica root',
+			'Orris root',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Juniper berries are the dominant botanical that must be present in gin, giving it its characteristic piney, resinous flavor that defines the spirit category.',
+	},
+	{
+		id: 38,
+		question: 'What distinguishes London Dry Gin from other gin styles?',
+		options: [
+			'It must be made in London',
+			'No artificial flavors and no sweetening after distillation',
+			'It uses only English botanicals',
+			'It must be aged in oak barrels',
+		],
+		correctAnswer: 1,
+		explanation:
+			'London Dry Gin is defined by its production method: no artificial flavors, colors, or sweetening agents can be added after distillation, creating a clean, juniper-forward profile.',
+	},
+	{
+		id: 39,
+		question: 'What makes Plymouth Gin unique compared to other gins?',
+		options: [
+			'It uses sloe berries',
+			'It has Protected Designation of Origin status',
+			'It contains no juniper',
+			'It is aged in sherry casks',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Plymouth Gin has Protected Designation of Origin status and can only be produced in Plymouth, England. It has a distinctive earthy, slightly sweet profile with less juniper than London Dry.',
+	},
+	{
+		id: 40,
+		question: 'What citrus botanicals are featured in Malfy Rosa Gin?',
+		options: [
+			'Lemon and lime',
+			'Pink grapefruit and rhubarb',
+			'Orange and bergamot',
+			'Yuzu and lemongrass',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Malfy Rosa is an Italian gin that features pink grapefruit and rhubarb as its signature botanicals, creating a distinctive pink color and fresh citrus profile.',
+	},
+	{
+		id: 41,
+		question: 'Aviation Gin is known for which production characteristic?',
+		options: [
+			'Barrel aging process',
+			'American-style smooth botanical balance',
+			'Navy strength bottling',
+			'Cold compounding method',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Aviation Gin is an American gin known for its smooth, balanced botanical profile that emphasizes lavender, sarsaparilla, and cardamom alongside traditional juniper.',
+	},
+	{
+		id: 42,
+		question: 'How is sloe gin traditionally made?',
+		options: [
+			'Distilling gin with sloe berries',
+			'Infusing gin with sloe berries and sugar',
+			'Fermenting sloe berries into alcohol',
+			'Blending gin with sloe berry juice',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Sloe gin is made by infusing gin with sloe berries (blackthorn fruit) and sugar for several months, creating a sweet, fruity liqueur with a deep red color.',
+	},
+	{
+		id: 43,
+		question:
+			'What makes Tanqueray gin distinctive in its botanical profile?',
+		options: [
+			'Heavy use of citrus peels',
+			'Four botanical recipe: juniper, coriander, angelica, licorice',
+			'Cucumber and rose petals',
+			'Mediterranean herbs and spices',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Tanqueray is famous for its simple four-botanical recipe of juniper, coriander seed, angelica root, and licorice root, creating a clean, classic London Dry profile.',
+	},
+	{
+		id: 44,
+		question:
+			'What is the difference between distilled gin and compound gin?',
+		options: [
+			'Distilled gin uses fresh botanicals, compound uses dried',
+			'Distilled gin is redistilled with botanicals, compound gin has flavors added to neutral spirit',
+			'Compound gin is aged, distilled gin is not',
+			'Distilled gin uses juniper, compound gin does not',
+		],
+		correctAnswer: 1,
+		explanation:
+			'Distilled gin is made by redistilling neutral spirit with botanicals, while compound gin is made by simply adding botanical extracts or essences to neutral spirit without redistillation.',
+	},
+	{
+		id: 45,
+		question: 'What ABV strength defines Navy Strength gin?',
+		options: ['40% ABV', '43% ABV', '47% ABV', '57% ABV'],
+		correctAnswer: 3,
+		explanation:
+			'Navy Strength gin is bottled at 57% ABV (100 proof), the strength that would still allow gunpowder to ignite if accidentally mixed with the spirit aboard naval ships.',
+	},
+	{
+		id: 46,
+		question: 'Which gin production method involves vapor infusion?',
+		options: [
+			'Cold compounding',
+			'Steeping botanicals in the still',
+			'Passing vapor through a botanical basket',
+			'Macerating in neutral spirit',
+		],
+		correctAnswer: 2,
+		explanation:
+			'Vapor infusion involves passing alcohol vapor through a basket of botanicals suspended above the liquid, extracting more delicate flavors without the intensity of direct contact.',
+	},
+	{
+		id: 47,
+		question: 'What gives Old Tom gin its characteristic sweetness?',
+		options: [
+			'Added sugar or sweetening agents',
+			'Barrel aging process',
+			'Sweet botanical profile',
+			'Lower proof distillation',
+		],
+		correctAnswer: 0,
+		explanation:
+			'Old Tom gin gets its sweetness from added sugar or sweetening agents during production, making it a bridge between London Dry gin and Dutch jenever.',
+	},
+	{
+		id: 48,
+		question:
+			'Which botanical is commonly used to add citrus notes to gin?',
+		options: [
+			'Orris root',
+			'Coriander seed',
+			'Lemon peel',
+			'Angelica root',
+		],
+		correctAnswer: 2,
+		explanation:
+			'Lemon peel (and other citrus peels like orange and lime) are commonly used botanicals that add bright, fresh citrus notes to gin during distillation.',
+	},
 ];
 
 // Export shuffled questions that will be randomized each time the module is imported
