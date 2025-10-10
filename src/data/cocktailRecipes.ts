@@ -304,7 +304,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 			'Muddle mint gently, add rum, lime juice, and syrup. Shake with ice, strain into glass with fresh ice. Top with soda water.',
 		glassware: 'Highball Glass',
 		difficulty: 'easy',
-		history: 'The Mojito originated in 16th century Cuba, initially as a medicinal drink called "El Draque" named after English privateer Sir Francis Drake. Cuban slaves working in sugar fields created an early version using aguardiente (a crude rum precursor), lime juice, sugar cane juice, and mint to combat scurvy and other ailments. The modern Mojito gained international fame through Ernest Hemingway, who frequented La Bodeguita del Medio in Havana where he famously said, "My mojito in La Bodeguita, my daiquiri in El Floridita."',
+		history:
+			'The Mojito originated in 16th century Cuba, initially as a medicinal drink called "El Draque" named after English privateer Sir Francis Drake. Cuban slaves working in sugar fields created an early version using aguardiente (a crude rum precursor), lime juice, sugar cane juice, and mint to combat scurvy and other ailments. The modern Mojito gained international fame through Ernest Hemingway, who frequented La Bodeguita del Medio in Havana where he famously said, "My mojito in La Bodeguita, my daiquiri in El Floridita."',
 	},
 	{
 		id: 'negroni',
@@ -337,7 +338,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 			'Stir all ingredients with ice. Strain into rocks glass over large ice cube. Express orange peel over drink.',
 		glassware: 'Rocks Glass',
 		difficulty: 'medium',
-		history: 'Created in 1919 at Caffè Casoni in Florence by Count Camillo Negroni, who asked bartender Fosco Scarselli to strengthen his favorite Americano cocktail by replacing soda water with gin. The drink was originally called the "Negroni sbagliato" (wrong Negroni) but became so popular that it dropped the "sbagliato." The Negroni family later established a distillery and began producing a ready-made version. This bitter aperitif became a symbol of Italian sophistication and is now celebrated annually on Negroni Week worldwide.',
+		history:
+			'Created in 1919 at Caffè Casoni in Florence by Count Camillo Negroni, who asked bartender Fosco Scarselli to strengthen his favorite Americano cocktail by replacing soda water with gin. The drink was originally called the "Negroni sbagliato" (wrong Negroni) but became so popular that it dropped the "sbagliato." The Negroni family later established a distillery and began producing a ready-made version. This bitter aperitif became a symbol of Italian sophistication and is now celebrated annually on Negroni Week worldwide.',
 	},
 	{
 		id: 'margarita',
@@ -370,7 +372,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 			'Shake all ingredients with ice. Strain into coupe glass or rocks glass with salted rim.',
 		glassware: 'Coupe or Rocks Glass',
 		difficulty: 'easy',
-		history: 'The Margarita\'s origins are disputed, with multiple creation stories from the 1930s-1940s. The most credible tale credits Carlos "Danny" Herrera, who created it in 1938 at his restaurant Rancho La Gloria in Tijuana for customer Marjorie King, who was allergic to all spirits except tequila. Another story credits socialite Margarita Sames, who supposedly invented it in 1948 at her Acapulco vacation home. The drink gained popularity in the US during the 1970s, coinciding with the rise of tequila imports and Mexican cuisine culture.',
+		history:
+			'The Margarita\'s origins are disputed, with multiple creation stories from the 1930s-1940s. The most credible tale credits Carlos "Danny" Herrera, who created it in 1938 at his restaurant Rancho La Gloria in Tijuana for customer Marjorie King, who was allergic to all spirits except tequila. Another story credits socialite Margarita Sames, who supposedly invented it in 1948 at her Acapulco vacation home. The drink gained popularity in the US during the 1970s, coinciding with the rise of tequila imports and Mexican cuisine culture.',
 	},
 	{
 		id: 'old-fashioned',
@@ -403,7 +406,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 			'Stir all ingredients with ice. Strain into rocks glass over large ice cube. Express orange peel.',
 		glassware: 'Rocks Glass',
 		difficulty: 'medium',
-		history: 'The Old Fashioned dates back to the 1880s when cocktail culture was becoming overly complicated with elaborate ingredients. Traditional drinkers demanded their whiskey be made the "old-fashioned way" - simply with whiskey, sugar, bitters, and water. The drink was first documented in 1895 in George Kappeler\'s "Modern American Drinks." Originally made with rye whiskey, it later transitioned to bourbon. The cocktail experienced a renaissance in the 2000s, becoming a symbol of classic American bartending and the craft cocktail movement.',
+		history:
+			'The Old Fashioned dates back to the 1880s when cocktail culture was becoming overly complicated with elaborate ingredients. Traditional drinkers demanded their whiskey be made the "old-fashioned way" - simply with whiskey, sugar, bitters, and water. The drink was first documented in 1895 in George Kappeler\'s "Modern American Drinks." Originally made with rye whiskey, it later transitioned to bourbon. The cocktail experienced a renaissance in the 2000s, becoming a symbol of classic American bartending and the craft cocktail movement.',
 	},
 	{
 		id: 'martini',
@@ -431,7 +435,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 			'Stir gin and vermouth with ice. Strain into chilled coupe glass. Garnish with olives.',
 		glassware: 'Coupe Glass',
 		difficulty: 'hard',
-		history: 'The Martini\'s exact origins are debated, but it likely evolved from the Martinez cocktail in the 1880s. Some credit Jerry Thomas\'s 1887 "Bartender\'s Guide," while others point to the town of Martinez, California. Initially made with Old Tom gin and sweet vermouth, it gradually shifted to dry vermouth and London Dry gin. The ratio debate ("dry" vs "wet") became legendary, with Winston Churchill famously preferring his so dry that he would "glance at the vermouth bottle while drinking the gin." James Bond popularized the "shaken, not stirred" variation, though purists insist on stirring.',
+		history:
+			'The Martini\'s exact origins are debated, but it likely evolved from the Martinez cocktail in the 1880s. Some credit Jerry Thomas\'s 1887 "Bartender\'s Guide," while others point to the town of Martinez, California. Initially made with Old Tom gin and sweet vermouth, it gradually shifted to dry vermouth and London Dry gin. The ratio debate ("dry" vs "wet") became legendary, with Winston Churchill famously preferring his so dry that he would "glance at the vermouth bottle while drinking the gin." James Bond popularized the "shaken, not stirred" variation, though purists insist on stirring.',
 	},
 	{
 		id: 'daiquiri',
@@ -459,7 +464,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 			'Shake all ingredients with ice. Double strain into chilled coupe glass.',
 		glassware: 'Coupe Glass',
 		difficulty: 'easy',
-		history: 'Named after the Cuban town of Daiquirí, this cocktail was invented around 1898 by American mining engineer Jennings Cox. When entertaining guests at his home near Santiago de Cuba, Cox ran out of gin and substituted the local Bacardi rum with lime juice and sugar. The drink gained international fame through Constantino Ribalaigua, head bartender at El Floridita in Havana, who perfected the recipe and served it to celebrities including Ernest Hemingway. Hemingway famously preferred his "Papa Doble" - a double daiquiri with no sugar and extra lime.',
+		history:
+			'Named after the Cuban town of Daiquirí, this cocktail was invented around 1898 by American mining engineer Jennings Cox. When entertaining guests at his home near Santiago de Cuba, Cox ran out of gin and substituted the local Bacardi rum with lime juice and sugar. The drink gained international fame through Constantino Ribalaigua, head bartender at El Floridita in Havana, who perfected the recipe and served it to celebrities including Ernest Hemingway. Hemingway famously preferred his "Papa Doble" - a double daiquiri with no sugar and extra lime.',
 	},
 	{
 		id: 'whiskey-sour',
@@ -492,7 +498,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 			'Shake all ingredients with ice. Strain into coupe glass. Garnish with cherry.',
 		glassware: 'Coupe Glass',
 		difficulty: 'easy',
-		history: 'The Whiskey Sour belongs to the "sour" family of cocktails that emerged in the 1860s, following the basic template of spirit, citrus, and sweetener. First published in Jerry Thomas\'s 1862 "How to Mix Drinks," it originally used gum syrup instead of simple syrup. The drink gained popularity during American Prohibition when bootleg whiskey was harsh and needed mellowing with citrus and sugar. Modern craft bartenders often add egg white for texture and foam, creating the "Boston Sour" variation. The cocktail represents the perfect balance of sweet, sour, and spirit - a foundational concept in mixology.',
+		history:
+			'The Whiskey Sour belongs to the "sour" family of cocktails that emerged in the 1860s, following the basic template of spirit, citrus, and sweetener. First published in Jerry Thomas\'s 1862 "How to Mix Drinks," it originally used gum syrup instead of simple syrup. The drink gained popularity during American Prohibition when bootleg whiskey was harsh and needed mellowing with citrus and sugar. Modern craft bartenders often add egg white for texture and foam, creating the "Boston Sour" variation. The cocktail represents the perfect balance of sweet, sour, and spirit - a foundational concept in mixology.',
 	},
 	{
 		id: 'moscow-mule',
@@ -526,7 +533,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 			'Build in copper mug with ice. Add vodka and lime juice, top with ginger beer. Stir gently.',
 		glassware: 'Copper Mug',
 		difficulty: 'easy',
-		history: 'The Moscow Mule was invented in 1941 at the Cock \'n\' Bull pub in Hollywood by owner Jack Morgan, who was struggling to sell his homemade ginger beer. He partnered with John Martin from Heublein spirits (promoting Smirnoff vodka) and Sophie Berezinski (selling copper mugs). Together they created this cocktail, served in the distinctive copper mug, which became essential to the drink\'s identity. The copper mug keeps the drink colder and enhances the aroma. The Moscow Mule helped introduce vodka to American palates and sparked the tiki cocktail movement of the 1940s-50s.',
+		history:
+			"The Moscow Mule was invented in 1941 at the Cock 'n' Bull pub in Hollywood by owner Jack Morgan, who was struggling to sell his homemade ginger beer. He partnered with John Martin from Heublein spirits (promoting Smirnoff vodka) and Sophie Berezinski (selling copper mugs). Together they created this cocktail, served in the distinctive copper mug, which became essential to the drink's identity. The copper mug keeps the drink colder and enhances the aroma. The Moscow Mule helped introduce vodka to American palates and sparked the tiki cocktail movement of the 1940s-50s.",
 	},
 ];
 
