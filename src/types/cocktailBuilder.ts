@@ -26,6 +26,7 @@ export interface CocktailRecipe {
 	instructions: string;
 	glassware: string;
 	difficulty: 'easy' | 'medium' | 'hard';
+	history: string;
 }
 
 export interface CocktailBuilderState {
