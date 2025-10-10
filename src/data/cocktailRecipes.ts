@@ -272,7 +272,7 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		name: 'Mojito',
 		emoji: '🍃',
 		description:
-			'The classic Cuban cocktail with white rum, mint, and lime',
+			"The classic Cuban cocktail that's refreshing and aromatic",
 		ingredients: [
 			{
 				ingredient: findIngredient('rum-white'),
@@ -309,7 +309,7 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		id: 'negroni',
 		name: 'Negroni',
 		emoji: '🍷',
-		description: 'Equal parts gin, Campari, and sweet vermouth',
+		description: 'A bold and bitter Italian aperitif cocktail',
 		ingredients: [
 			{
 				ingredient: findIngredient('gin'),
@@ -341,8 +341,7 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		id: 'margarita',
 		name: 'Margarita',
 		emoji: '🍹',
-		description:
-			'Tequila, lime juice, and orange liqueur - the perfect balance',
+		description: 'A vibrant Mexican cocktail with a perfect citrus balance',
 		ingredients: [
 			{
 				ingredient: findIngredient('tequila'),
@@ -374,7 +373,7 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		id: 'old-fashioned',
 		name: 'Old Fashioned',
 		emoji: '🥃',
-		description: 'Whiskey, sugar, bitters - the original cocktail',
+		description: 'The timeless American classic cocktail',
 		ingredients: [
 			{
 				ingredient: findIngredient('bourbon'),
@@ -406,7 +405,7 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		id: 'martini',
 		name: 'Gin Martini',
 		emoji: '🍸',
-		description: 'The classic: gin and dry vermouth, stirred not shaken',
+		description: 'The ultimate sophisticated cocktail served ice-cold',
 		ingredients: [
 			{
 				ingredient: findIngredient('gin'),
@@ -433,7 +432,7 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		id: 'daiquiri',
 		name: 'Daiquiri',
 		emoji: '🏝️',
-		description: 'Simple perfection: white rum, lime, and sugar',
+		description: 'A perfectly balanced tropical classic',
 		ingredients: [
 			{
 				ingredient: findIngredient('rum-white'),
@@ -460,7 +459,7 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		id: 'whiskey-sour',
 		name: 'Whiskey Sour',
 		emoji: '🍋',
-		description: 'Whiskey, lemon juice, and simple syrup - a classic sour',
+		description: 'A tangy and smooth classic American cocktail',
 		ingredients: [
 			{
 				ingredient: findIngredient('bourbon'),
@@ -492,7 +491,8 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		id: 'moscow-mule',
 		name: 'Moscow Mule',
 		emoji: '🐴',
-		description: 'Vodka, lime juice, and ginger beer in a copper mug',
+		description:
+			'A crisp and spicy cocktail traditionally served in copper',
 		ingredients: [
 			{
 				ingredient: findIngredient('vodka'),
