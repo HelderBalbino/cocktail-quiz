@@ -126,23 +126,35 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 				<h2 className='text-2xl sm:text-3xl font-bold text-white mb-2'>
 					{recipe.name}
 				</h2>
-				<p className='text-slate-300 text-sm sm:text-base mb-2'>
+				<p className='text-slate-300 text-sm sm:text-base mb-4'>
 					{recipe.description}
 				</p>
-				<div className='inline-flex items-center gap-2 bg-slate-700 px-3 py-1 rounded-full'>
-					<span className='text-xs text-slate-400'>Difficulty:</span>
-					<span
-						className={`text-xs font-medium ${
-							recipe.difficulty === 'easy'
-								? 'text-green-400'
-								: recipe.difficulty === 'medium'
-								? 'text-yellow-400'
-								: 'text-red-400'
-						}`}
-					>
-						{recipe.difficulty.charAt(0).toUpperCase() +
-							recipe.difficulty.slice(1)}
-					</span>
+				<div className='flex justify-center items-center gap-4'>
+					<div className='inline-flex items-center gap-2 bg-slate-700 px-3 py-1 rounded-full'>
+						<span className='text-xs text-slate-400'>
+							Difficulty:
+						</span>
+						<span
+							className={`text-xs font-medium ${
+								recipe.difficulty === 'easy'
+									? 'text-green-400'
+									: recipe.difficulty === 'medium'
+									? 'text-yellow-400'
+									: 'text-red-400'
+							}`}
+						>
+							{recipe.difficulty.charAt(0).toUpperCase() +
+								recipe.difficulty.slice(1)}
+						</span>
+					</div>
+					<div className='inline-flex items-center gap-2 bg-slate-700 px-3 py-1 rounded-full'>
+						<span className='text-xs text-slate-400'>
+							Served in:
+						</span>
+						<span className='text-xs font-medium text-teal-400'>
+							{recipe.glassware}
+						</span>
+					</div>
 				</div>
 			</div>
 
