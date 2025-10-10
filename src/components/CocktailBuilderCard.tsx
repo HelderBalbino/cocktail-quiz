@@ -681,6 +681,46 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 									Serve in: {recipe.glassware}
 								</motion.p>
 							</motion.div>
+
+							{/* Cocktail History Section */}
+							<motion.div
+								className='mt-6 pt-4 border-t border-slate-600'
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.5, delay: 2.0 }}
+							>
+								<motion.h5
+									className='text-sm font-semibold text-amber-400 mb-3 flex items-center gap-2'
+									initial={{ opacity: 0, x: -20 }}
+									animate={{ opacity: 1, x: 0 }}
+									transition={{ duration: 0.4, delay: 2.1 }}
+								>
+									<motion.span
+										className='text-lg'
+										animate={{
+											rotate: [0, 10, -10, 0],
+											scale: [1, 1.1, 1],
+										}}
+										transition={{
+											duration: 3,
+											delay: 2.2,
+											repeat: Infinity,
+											repeatDelay: 5,
+										}}
+									>
+										📜
+									</motion.span>
+									Historical Background
+								</motion.h5>
+								<motion.p
+									className='text-sm text-slate-300 leading-relaxed'
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									transition={{ duration: 0.5, delay: 2.3 }}
+								>
+									{recipe.history}
+								</motion.p>
+							</motion.div>
 						</motion.div>
 					</motion.div>
 				)}
