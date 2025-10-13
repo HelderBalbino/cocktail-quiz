@@ -102,7 +102,7 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 
 	return (
 		<motion.div
-			className='bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border border-slate-700/50 rounded-3xl shadow-2xl p-6 sm:p-8 max-w-5xl mx-auto relative overflow-hidden'
+			className='bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border border-slate-700/50 rounded-2xl sm:rounded-3xl shadow-2xl mobile-padding sm:p-8 max-w-5xl mx-auto relative overflow-hidden'
 			initial={{ opacity: 0, y: 50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -112,46 +112,64 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 			<div className='absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-teal-500/10 to-transparent rounded-full blur-3xl pointer-events-none'></div>
 			<div className='absolute bottom-0 left-0 w-64 h-64 bg-gradient-radial from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none'></div>
 
-			{/* Live Progress Tracker */}
+			{/* Mobile-Optimized Progress Tracker */}
 			{!showResults && (
 				<motion.div
-					className='absolute top-4 right-4 z-20'
+					className='mb-4 sm:absolute sm:top-4 sm:right-4 z-20'
 					initial={{ opacity: 0, scale: 0.8 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 0.5, delay: 1.0 }}
 				>
-					<div className='bg-slate-700/90 backdrop-blur-sm border border-slate-600 rounded-xl p-3 shadow-lg'>
-						<div className='flex items-center gap-3'>
-							<div className='text-center'>
-								<div className='text-xs text-slate-400 mb-1'>
-									Selected
+					<div className='bg-slate-700/90 backdrop-blur-sm border border-slate-600 rounded-xl p-3 sm:p-3 shadow-lg w-full sm:w-auto'>
+						<div className='flex items-center justify-between sm:gap-3'>
+							<div className='flex items-center gap-4 sm:gap-3'>
+								<div className='text-center'>
+									<div className='text-mobile-xs text-slate-400 mb-1'>
+										Selected
+									</div>
+									<div
+										className={`text-mobile-lg sm:text-lg font-bold ${
+											selectedIngredients.length === 0
+												? 'text-slate-400'
+												: selectedIngredients.length <=
+												  3
+												? 'text-amber-400'
+												: selectedIngredients.length <=
+												  5
+												? 'text-emerald-400'
+												: 'text-purple-400'
+										}`}
+									>
+										{selectedIngredients.length}
+									</div>
 								</div>
-								<div
-									className={`text-lg font-bold ${
-										selectedIngredients.length === 0
-											? 'text-slate-400'
-											: selectedIngredients.length <= 3
-											? 'text-amber-400'
-											: selectedIngredients.length <= 5
-											? 'text-emerald-400'
-											: 'text-purple-400'
-									}`}
-								>
-									{selectedIngredients.length}
+								<div className='w-px h-8 bg-slate-600'></div>
+								<div className='text-center'>
+									<div className='text-mobile-xs text-slate-400 mb-1'>
+										Needed
+									</div>
+									<div className='text-mobile-lg sm:text-lg font-bold text-teal-400'>
+										{
+											recipe.ingredients.filter(
+												(ing) => ing.essential,
+											).length
+										}
+									</div>
 								</div>
 							</div>
-							<div className='w-px h-8 bg-slate-600'></div>
-							<div className='text-center'>
-								<div className='text-xs text-slate-400 mb-1'>
-									Needed
-								</div>
-								<div className='text-lg font-bold text-teal-400'>
-									{
+
+							{/* Mobile completion indicator */}
+							<div className='sm:hidden'>
+								<div
+									className={`w-2 h-2 rounded-full ${
+										selectedIngredients.length >=
 										recipe.ingredients.filter(
 											(ing) => ing.essential,
 										).length
-									}
-								</div>
+											? 'bg-emerald-400 animate-pulse'
+											: 'bg-slate-500'
+									}`}
+								></div>
 							</div>
 						</div>
 					</div>
@@ -203,15 +221,15 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 					)}
 				</AnimatePresence>
 
-				{/* Enhanced Recipe Header */}
+				{/* Mobile-Optimized Recipe Header */}
 				<motion.div
-					className='text-center mb-8'
+					className='text-center mb-6 sm:mb-8'
 					initial={{ opacity: 0, y: -30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.2 }}
 				>
 					<motion.div
-						className='relative inline-block mb-4'
+						className='relative inline-block mb-3 sm:mb-4'
 						initial={{ scale: 0, rotate: -180 }}
 						animate={{ scale: 1, rotate: 0 }}
 						transition={{
@@ -222,13 +240,13 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 						}}
 					>
 						<div className='absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-xl'></div>
-						<div className='relative text-6xl sm:text-7xl p-4'>
+						<div className='relative text-5xl sm:text-6xl lg:text-7xl p-3 sm:p-4'>
 							{recipe.emoji}
 						</div>
 					</motion.div>
 
 					<motion.h2
-						className='text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-3'
+						className='text-mobile-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2 sm:mb-3 px-4'
 						initial={{ opacity: 0, x: -50 }}
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.5, delay: 0.4 }}
@@ -277,27 +295,27 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 					</motion.div>
 				</motion.div>
 
-				{/* Selected Ingredients Bar with enhanced design */}
+				{/* Mobile-Optimized Selected Ingredients Bar */}
 				<motion.div
-					className='mb-8'
+					className='mb-6 sm:mb-8'
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.7 }}
 				>
 					<motion.div
-						className='bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600 rounded-2xl p-6 shadow-xl'
+						className='bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600 rounded-xl sm:rounded-2xl mobile-padding sm:p-6 shadow-xl'
 						layout
 						transition={{ duration: 0.3 }}
 					>
 						<motion.div
-							className='flex items-center justify-between mb-4'
+							className='flex items-center justify-between mb-3 sm:mb-4'
 							initial={{ opacity: 0, x: -30 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.5, delay: 0.8 }}
 						>
-							<div className='flex items-center gap-3'>
+							<div className='flex items-center gap-2 sm:gap-3'>
 								<motion.span
-									className='text-2xl'
+									className='text-xl sm:text-2xl'
 									animate={{ rotate: [0, 10, -10, 0] }}
 									transition={{
 										duration: 2,
@@ -307,12 +325,12 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 								>
 									🍹
 								</motion.span>
-								<h3 className='text-xl font-bold text-emerald-400'>
+								<h3 className='text-mobile-lg sm:text-xl font-bold text-emerald-400'>
 									Your Cocktail
 								</h3>
 							</div>
 							<motion.div
-								className={`px-4 py-2 rounded-full text-sm font-bold ${
+								className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-mobile-xs sm:text-sm font-bold ${
 									selectedIngredients.length === 0
 										? 'bg-slate-600 text-slate-400'
 										: selectedIngredients.length <= 3
@@ -328,12 +346,13 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 									repeatDelay: 2,
 								}}
 							>
-								{selectedIngredients.length} ingredients
+								{selectedIngredients.length} items
 							</motion.div>
 						</motion.div>
 
+						{/* Mobile-optimized ingredient display */}
 						<motion.div
-							className='min-h-[80px] bg-slate-900/50 border border-slate-600 rounded-xl p-4'
+							className='min-h-[60px] sm:min-h-[80px] bg-slate-900/50 border border-slate-600 rounded-lg sm:rounded-xl p-3 sm:p-4'
 							layout
 							transition={{ duration: 0.3 }}
 						>
@@ -799,10 +818,10 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 					)}
 				</AnimatePresence>
 
-				{/* Enhanced Action Buttons */}
+				{/* Mobile-Optimized Action Buttons */}
 				{!showResults ? (
 					<motion.div
-						className='text-center space-y-4'
+						className='text-center space-y-3 sm:space-y-4'
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 1.2 }}
@@ -810,14 +829,14 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 						<motion.button
 							onClick={onComplete}
 							disabled={selectedIngredients.length === 0}
-							className={`relative overflow-hidden font-bold py-4 px-10 rounded-2xl text-lg shadow-2xl transition-all duration-300 ${
+							className={`relative overflow-hidden font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-xl sm:rounded-2xl text-mobile-base sm:text-lg shadow-2xl transition-all duration-300 w-full sm:w-auto touch-target ${
 								selectedIngredients.length === 0
 									? 'bg-slate-600 text-slate-400 cursor-not-allowed'
 									: 'bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 text-white hover:from-emerald-700 hover:via-teal-700 hover:to-emerald-700'
 							}`}
 							whileHover={{
 								scale:
-									selectedIngredients.length > 0 ? 1.05 : 1,
+									selectedIngredients.length > 0 ? 1.02 : 1,
 								boxShadow:
 									selectedIngredients.length > 0
 										? '0 20px 40px rgba(16, 185, 129, 0.4)'
@@ -825,7 +844,7 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 							}}
 							whileTap={{
 								scale:
-									selectedIngredients.length > 0 ? 0.95 : 1,
+									selectedIngredients.length > 0 ? 0.98 : 1,
 							}}
 							animate={
 								selectedIngredients.length > 0
@@ -860,12 +879,17 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 									transition={{ duration: 0.3 }}
 								/>
 							)}
-							<span className='relative z-10 flex items-center gap-3'>
-								<span className='text-2xl'>🍹</span>
-								<span>Check My Cocktail</span>
+							<span className='relative z-10 flex items-center justify-center gap-2 sm:gap-3'>
+								<span className='text-xl sm:text-2xl'>🍹</span>
+								<span className='hidden sm:inline'>
+									Check My Cocktail
+								</span>
+								<span className='sm:hidden'>
+									Check Cocktail
+								</span>
 								{selectedIngredients.length > 0 && (
 									<motion.span
-										className='bg-white/20 px-2 py-1 rounded-full text-sm'
+										className='bg-white/20 px-2 py-1 rounded-full text-mobile-xs sm:text-sm'
 										initial={{ scale: 0 }}
 										animate={{ scale: 1 }}
 										transition={{
@@ -881,12 +905,17 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 
 						{selectedIngredients.length === 0 && (
 							<motion.p
-								className='text-slate-400 text-sm'
+								className='text-slate-400 text-mobile-sm px-4'
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								transition={{ delay: 0.5 }}
 							>
-								Select ingredients to build your cocktail
+								<span className='sm:hidden'>
+									Tap ingredients to build your cocktail
+								</span>
+								<span className='hidden sm:inline'>
+									Select ingredients to build your cocktail
+								</span>
 							</motion.p>
 						)}
 					</motion.div>
@@ -899,9 +928,9 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 					>
 						<motion.button
 							onClick={onComplete}
-							className='relative overflow-hidden bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white font-bold py-4 px-10 rounded-2xl text-lg shadow-2xl'
+							className='relative overflow-hidden bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-xl sm:rounded-2xl text-mobile-base sm:text-lg shadow-2xl w-full sm:w-auto touch-target'
 							whileHover={{
-								scale: 1.05,
+								scale: 1.02,
 								boxShadow:
 									'0 20px 40px rgba(168, 85, 247, 0.5)',
 							}}
@@ -922,8 +951,8 @@ const CocktailBuilderCard: React.FC<CocktailBuilderCardProps> = ({
 							}}
 							style={{ backgroundSize: '200% 100%' }}
 						>
-							<span className='flex items-center gap-3'>
-								<span className='text-2xl'>➡️</span>
+							<span className='flex items-center justify-center gap-2 sm:gap-3'>
+								<span className='text-xl sm:text-2xl'>➡️</span>
 								<span>Next Cocktail</span>
 							</span>
 						</motion.button>
