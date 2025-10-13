@@ -69,7 +69,7 @@ const IngredientCategories: React.FC<IngredientCategoriesProps> = ({
 
 	return (
 		<motion.div
-			className='space-y-6'
+			className='space-y-4 sm:space-y-6'
 			initial={{ opacity: 0, y: 30 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5, delay: 0.9 }}
@@ -83,7 +83,7 @@ const IngredientCategories: React.FC<IngredientCategoriesProps> = ({
 					return (
 						<motion.div
 							key={category}
-							className='bg-slate-700/30 rounded-xl p-4 border border-slate-600/50'
+							className='bg-slate-700/30 rounded-xl mobile-padding sm:p-4 border border-slate-600/50'
 							initial={{ opacity: 0, x: -20 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{
@@ -92,7 +92,7 @@ const IngredientCategories: React.FC<IngredientCategoriesProps> = ({
 							}}
 						>
 							<motion.div
-								className='flex items-center gap-3 mb-4'
+								className='flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4'
 								initial={{ opacity: 0, y: -10 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{
@@ -101,20 +101,21 @@ const IngredientCategories: React.FC<IngredientCategoriesProps> = ({
 								}}
 							>
 								<div
-									className={`w-8 h-8 rounded-lg bg-gradient-to-r ${info.color} flex items-center justify-center text-white text-sm font-bold shadow-lg`}
+									className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-r ${info.color} flex items-center justify-center text-white text-sm font-bold shadow-lg`}
 								>
 									{info.emoji}
 								</div>
-								<h4 className='text-lg font-semibold text-white'>
+								<h4 className='text-mobile-base sm:text-lg font-semibold text-white'>
 									{info.name}
 								</h4>
-								<div className='bg-slate-600 text-slate-300 px-2 py-1 rounded-full text-xs font-medium'>
+								<div className='bg-slate-600 text-slate-300 px-2 py-1 rounded-full text-mobile-xs font-medium ml-auto'>
 									{categoryIngredients.length}
 								</div>
 							</motion.div>
 
+							{/* Mobile-optimized ingredient grid */}
 							<motion.div
-								className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3'
+								className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3'
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								transition={{
@@ -181,7 +182,7 @@ const IngredientCategories: React.FC<IngredientCategoriesProps> = ({
 														);
 													}
 												}}
-												className={`relative p-3 rounded-xl border-2 text-center transition-all duration-200 min-h-[90px] group ${
+												className={`relative p-2 sm:p-3 rounded-xl border-2 text-center transition-all duration-200 touch-target group ${
 													showResults
 														? status.status ===
 														  'correct'
@@ -195,7 +196,7 @@ const IngredientCategories: React.FC<IngredientCategoriesProps> = ({
 															: 'bg-slate-700/50 border-slate-600 text-slate-300'
 														: isSelected
 														? 'bg-gradient-to-br from-teal-800 to-teal-900 border-teal-400 text-teal-100 shadow-teal-400/30 shadow-lg transform'
-														: 'bg-slate-700/50 border-slate-600 text-slate-200 hover:bg-slate-600/70 hover:border-slate-500 hover:shadow-lg'
+														: 'bg-slate-700/50 border-slate-600 text-slate-200 hover:bg-slate-600/70 hover:border-slate-500 hover:shadow-lg active:scale-95'
 												}`}
 												disabled={showResults}
 											>
@@ -252,7 +253,7 @@ const IngredientCategories: React.FC<IngredientCategoriesProps> = ({
 												)}
 
 												<motion.div
-													className='text-2xl mb-2'
+													className='text-xl sm:text-2xl mb-1 sm:mb-2'
 													animate={
 														isSelected &&
 														!showResults
@@ -274,12 +275,12 @@ const IngredientCategories: React.FC<IngredientCategoriesProps> = ({
 												>
 													{ingredient.emoji}
 												</motion.div>
-												<div className='text-xs font-medium leading-tight'>
+												<div className='text-mobile-xs sm:text-xs font-medium leading-tight px-1'>
 													{ingredient.name}
 												</div>
 
-												{/* Hover tooltip */}
-												<div className='opacity-0 group-hover:opacity-100 absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs rounded-lg px-2 py-1 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-10'>
+												{/* Mobile-friendly tooltip (only on non-touch devices) */}
+												<div className='hidden sm:block opacity-0 group-hover:opacity-100 absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs rounded-lg px-2 py-1 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-10'>
 													{ingredient.name}
 													<div className='absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900'></div>
 												</div>
