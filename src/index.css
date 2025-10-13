@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom gradient utilities */
+.bg-gradient-radial {
+	background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+}
+
 /* Confetti explosion animation - MASSIVE burst outward from center */
 @keyframes confetti-explosion {
 	0% {
