@@ -2,9 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile-first optimizations */
+@layer utilities {
+	/* Touch-friendly minimum sizes */
+	.touch-target {
+		min-height: 44px;
+		min-width: 44px;
+	}
+
+	/* Mobile-optimized text scaling */
+	.text-mobile-xs {
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+	.text-mobile-sm {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	.text-mobile-base {
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
+	.text-mobile-lg {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+	}
+	.text-mobile-xl {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
+	.text-mobile-2xl {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
+	.text-mobile-3xl {
+		font-size: 1.875rem;
+		line-height: 2.25rem;
+	}
+
+	/* Mobile-optimized spacing */
+	.mobile-padding {
+		padding: 1rem;
+	}
+	.mobile-margin {
+		margin: 0.75rem;
+	}
+	.mobile-gap {
+		gap: 0.75rem;
+	}
+
+	/* Mobile-safe scrolling */
+	.mobile-scroll {
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+	.mobile-scroll::-webkit-scrollbar {
+		display: none;
+	}
+}
+
 /* Custom gradient utilities */
 .bg-gradient-radial {
 	background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+}
+
+/* Mobile-optimized animations */
+@keyframes shimmer {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* Mobile-optimized back button */
+.mobile-back-btn {
+	position: fixed;
+	top: 0.75rem;
+	left: 0.75rem;
+	z-index: 50;
+	background-color: rgb(51 65 85);
+	color: white;
+	padding: 0.625rem;
+	border-radius: 0.5rem;
+	transition: all 200ms;
+	min-height: 44px;
+	min-width: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.mobile-back-btn:hover {
+	background-color: rgb(71 85 105);
+}
+
+@media (min-width: 640px) {
+	.mobile-back-btn {
+		top: 1rem;
+		left: 1rem;
+		padding: 0.5rem;
+	}
 }
 
 /* Confetti explosion animation - MASSIVE burst outward from center */
