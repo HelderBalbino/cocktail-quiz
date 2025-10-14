@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MemoryCard as MemoryCardType } from '../types/memoryGame';
 
@@ -15,10 +15,22 @@ const MemoryCard: React.FC<MemoryCardProps> = ({
 	isClickable,
 	index,
 }) => {
+	const [imageError, setImageError] = useState(false);
+	const [imageLoading, setImageLoading] = useState(true);
+
 	const handleClick = () => {
 		if (isClickable && !card.isFlipped && !card.isMatched) {
 			onCardClick(card.id);
 		}
+	};
+
+	const handleImageLoad = () => {
+		setImageLoading(false);
+	};
+
+	const handleImageError = () => {
+		setImageLoading(false);
+		setImageError(true);
 	};
 
 	// Card type specific styling
@@ -167,9 +179,9 @@ const MemoryCard: React.FC<MemoryCardProps> = ({
 							</div>
 						</div>
 
-						{/* Main emoji */}
+						{/* Main image or emoji */}
 						<motion.div
-							className='text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 relative z-10'
+							className='text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 relative z-10 flex items-center justify-center'
 							initial={{ scale: 0 }}
 							animate={{ scale: 1 }}
 							transition={{
@@ -178,7 +190,34 @@ const MemoryCard: React.FC<MemoryCardProps> = ({
 								stiffness: 300,
 							}}
 						>
-							{card.emoji}
+							{card.image &&
+							card.type === 'cocktail' &&
+							!imageError ? (
+								<div className='relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20'>
+									{imageLoading && (
+										<div className='absolute inset-0 bg-slate-600 rounded-lg animate-pulse flex items-center justify-center'>
+											<span className='text-lg'>
+												{card.emoji}
+											</span>
+										</div>
+									)}
+									<img
+										src={card.image}
+										alt={card.value}
+										onLoad={handleImageLoad}
+										onError={handleImageError}
+										className={`w-full h-full object-cover rounded-lg shadow-md transition-opacity duration-300 ${
+											imageLoading
+												? 'opacity-0'
+												: 'opacity-100'
+										}`}
+									/>
+								</div>
+							) : (
+								<span className='text-3xl sm:text-4xl md:text-5xl'>
+									{card.emoji}
+								</span>
+							)}
 						</motion.div>
 
 						{/* Card name */}
