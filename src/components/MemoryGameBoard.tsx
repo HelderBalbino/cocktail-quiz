@@ -24,27 +24,80 @@ const MemoryGameBoard: React.FC<MemoryGameBoardProps> = ({
 	onGameComplete,
 	onBackToSelection,
 }) => {
-	const [gameState, setGameState] = useState<MemoryGameState>(() => {
-		const cards = generateMemoryCards(difficulty);
-		const config = difficultyConfigs[difficulty];
-
-		return {
-			cards,
-			difficulty,
-			flippedCards: [],
-			matchedPairs: 0,
-			totalPairs: cards.length / 2,
-			moves: 0,
-			timeLeft: config.timeLimit,
-			isComplete: false,
-			isPlaying: false,
-			score: 0,
-		};
-	});
-
+	const [gameState, setGameState] = useState<MemoryGameState | null>(null);
+	const [isLoading, setIsLoading] = useState(true);
 	const [showTip, setShowTip] = useState(false);
 	const [currentTip, setCurrentTip] = useState('');
 	const [gameStarted, setGameStarted] = useState(false);
+
+	// Initialize game with async card generation
+	useEffect(() => {
+		const initializeGame = async () => {
+			setIsLoading(true);
+			try {
+				const cards = await generateMemoryCards(difficulty);
+				const config = difficultyConfigs[difficulty];
+
+				setGameState({
+					cards,
+					difficulty,
+					flippedCards: [],
+					matchedPairs: 0,
+					totalPairs: cards.length / 2,
+					moves: 0,
+					timeLeft: config.timeLimit,
+					isComplete: false,
+					isPlaying: false,
+					score: 0,
+				});
+			} catch (error) {
+				console.error('Failed to initialize memory game:', error);
+				// Fallback to sync version without images
+				const cards = await import('../data/memoryGame').then((m) =>
+					m.cocktailCards
+						.slice(0, difficultyConfigs[difficulty].gridSize / 2)
+						.flatMap((card, index) => [
+							{
+								id: `${card.id}-1`,
+								type: 'cocktail' as const,
+								value: card.name,
+								emoji: card.emoji,
+								isFlipped: false,
+								isMatched: false,
+								pairId: `pair-${index}`,
+							},
+							{
+								id: `${card.id}-2`,
+								type: 'cocktail' as const,
+								value: card.name,
+								emoji: card.emoji,
+								isFlipped: false,
+								isMatched: false,
+								pairId: `pair-${index}`,
+							},
+						]),
+				);
+
+				const config = difficultyConfigs[difficulty];
+				setGameState({
+					cards,
+					difficulty,
+					flippedCards: [],
+					matchedPairs: 0,
+					totalPairs: cards.length / 2,
+					moves: 0,
+					timeLeft: config.timeLimit,
+					isComplete: false,
+					isPlaying: false,
+					score: 0,
+				});
+			} finally {
+				setIsLoading(false);
+			}
+		};
+
+		initializeGame();
+	}, [difficulty]);
 
 	// Timer effect
 	useEffect(() => {
@@ -211,22 +264,29 @@ const MemoryGameBoard: React.FC<MemoryGameBoardProps> = ({
 		],
 	);
 
-	const resetGame = () => {
-		const cards = generateMemoryCards(difficulty);
-		const config = difficultyConfigs[difficulty];
+	const resetGame = async () => {
+		setIsLoading(true);
+		try {
+			const cards = await generateMemoryCards(difficulty);
+			const config = difficultyConfigs[difficulty];
 
-		setGameState({
-			cards,
-			difficulty,
-			flippedCards: [],
-			matchedPairs: 0,
-			totalPairs: cards.length / 2,
-			moves: 0,
-			timeLeft: config.timeLimit,
-			isComplete: false,
-			isPlaying: false,
-			score: 0,
-		});
+			setGameState({
+				cards,
+				difficulty,
+				flippedCards: [],
+				matchedPairs: 0,
+				totalPairs: cards.length / 2,
+				moves: 0,
+				timeLeft: config.timeLimit,
+				isComplete: false,
+				isPlaying: false,
+				score: 0,
+			});
+		} catch (error) {
+			console.error('Failed to reset game:', error);
+		} finally {
+			setIsLoading(false);
+		}
 		setGameStarted(false);
 		setShowTip(true);
 		setCurrentTip(getMemoryGameTip());
@@ -245,206 +305,235 @@ const MemoryGameBoard: React.FC<MemoryGameBoardProps> = ({
 
 	return (
 		<div className='min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900'>
-			<div className='container mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6 lg:py-8'>
-				{/* Header */}
-				<motion.div
-					className='mb-4 sm:mb-6'
-					initial={{ opacity: 0, y: -30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-				>
-					<div className='flex items-center justify-between mb-4'>
-						<div className='flex items-center gap-3'>
+			{isLoading || !gameState ? (
+				<div className='flex items-center justify-center min-h-screen'>
+					<motion.div
+						className='text-center'
+						initial={{ opacity: 0, scale: 0.8 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.6 }}
+					>
+						<div className='text-6xl mb-4 animate-bounce'>🧩</div>
+						<h2 className='text-2xl text-white font-bold mb-2'>
+							Loading Memory Game
+						</h2>
+						<p className='text-slate-300 mb-4'>
+							Fetching cocktail images...
+						</p>
+						<div className='w-48 h-2 bg-slate-700 rounded-full overflow-hidden mx-auto'>
 							<motion.div
-								className='text-4xl sm:text-5xl'
-								animate={{
-									scale: [1, 1.1, 1],
-									rotate: [0, 5, -5, 0],
-								}}
-								transition={{
-									duration: 2,
-									repeat: Infinity,
-									repeatDelay: 3,
-								}}
-							>
-								🧠
-							</motion.div>
-							<div>
-								<h1 className='text-mobile-2xl sm:text-3xl font-bold text-white'>
-									Memory Match
-								</h1>
-								<p className='text-slate-400 text-mobile-sm'>
-									{config.description}
-								</p>
-							</div>
+								className='h-full bg-gradient-to-r from-blue-600 to-cyan-600'
+								initial={{ width: '0%' }}
+								animate={{ width: '100%' }}
+								transition={{ duration: 2, repeat: Infinity }}
+							/>
 						</div>
-
-						{/* Back button */}
-						<button
-							onClick={onBackToSelection}
-							className='mobile-back-btn'
-						>
-							<span className='flex items-center gap-1'>
-								<span>←</span>
-								<span className='hidden sm:inline'>Back</span>
-							</span>
-						</button>
-					</div>
-
-					{/* Game stats */}
-					<div className='grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4'>
-						{/* Timer */}
-						<div
-							className={`bg-slate-800/50 backdrop-blur-sm border rounded-xl p-3 ${
-								isTimeUrgent
-									? 'border-red-500 bg-red-900/20'
-									: 'border-slate-600'
-							}`}
-						>
-							<div className='text-center'>
-								<div
-									className={`text-mobile-lg sm:text-xl font-bold ${
-										isTimeUrgent
-											? 'text-red-400 animate-pulse'
-											: 'text-emerald-400'
-									}`}
+					</motion.div>
+				</div>
+			) : (
+				<div className='container mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6 lg:py-8'>
+					{/* Header */}
+					<motion.div
+						className='mb-4 sm:mb-6'
+						initial={{ opacity: 0, y: -30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6 }}
+					>
+						<div className='flex items-center justify-between mb-4'>
+							<div className='flex items-center gap-3'>
+								<motion.div
+									className='text-4xl sm:text-5xl'
+									animate={{
+										scale: [1, 1.1, 1],
+										rotate: [0, 5, -5, 0],
+									}}
+									transition={{
+										duration: 2,
+										repeat: Infinity,
+										repeatDelay: 3,
+									}}
 								>
-									{Math.floor(gameState.timeLeft / 60)}:
-									{(gameState.timeLeft % 60)
-										.toString()
-										.padStart(2, '0')}
+									🧠
+								</motion.div>
+								<div>
+									<h1 className='text-mobile-2xl sm:text-3xl font-bold text-white'>
+										Memory Match
+									</h1>
+									<p className='text-slate-400 text-mobile-sm'>
+										{config.description}
+									</p>
 								</div>
-								<div className='text-mobile-xs text-slate-400'>
-									Time Left
+							</div>
+
+							{/* Back button */}
+							<button
+								onClick={onBackToSelection}
+								className='mobile-back-btn'
+							>
+								<span className='flex items-center gap-1'>
+									<span>←</span>
+									<span className='hidden sm:inline'>
+										Back
+									</span>
+								</span>
+							</button>
+						</div>
+
+						{/* Game stats */}
+						<div className='grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4'>
+							{/* Timer */}
+							<div
+								className={`bg-slate-800/50 backdrop-blur-sm border rounded-xl p-3 ${
+									isTimeUrgent
+										? 'border-red-500 bg-red-900/20'
+										: 'border-slate-600'
+								}`}
+							>
+								<div className='text-center'>
+									<div
+										className={`text-mobile-lg sm:text-xl font-bold ${
+											isTimeUrgent
+												? 'text-red-400 animate-pulse'
+												: 'text-emerald-400'
+										}`}
+									>
+										{Math.floor(gameState.timeLeft / 60)}:
+										{(gameState.timeLeft % 60)
+											.toString()
+											.padStart(2, '0')}
+									</div>
+									<div className='text-mobile-xs text-slate-400'>
+										Time Left
+									</div>
+								</div>
+							</div>
+
+							{/* Moves */}
+							<div className='bg-slate-800/50 backdrop-blur-sm border border-slate-600 rounded-xl p-3'>
+								<div className='text-center'>
+									<div className='text-mobile-lg sm:text-xl font-bold text-amber-400'>
+										{gameState.moves}
+									</div>
+									<div className='text-mobile-xs text-slate-400'>
+										Moves
+									</div>
+								</div>
+							</div>
+
+							{/* Progress */}
+							<div className='bg-slate-800/50 backdrop-blur-sm border border-slate-600 rounded-xl p-3'>
+								<div className='text-center'>
+									<div className='text-mobile-lg sm:text-xl font-bold text-purple-400'>
+										{gameState.matchedPairs}/
+										{gameState.totalPairs}
+									</div>
+									<div className='text-mobile-xs text-slate-400'>
+										Pairs
+									</div>
+								</div>
+							</div>
+
+							{/* Difficulty */}
+							<div className='bg-slate-800/50 backdrop-blur-sm border border-slate-600 rounded-xl p-3'>
+								<div className='text-center'>
+									<div className='text-mobile-lg sm:text-xl font-bold text-teal-400'>
+										{config.name}
+									</div>
+									<div className='text-mobile-xs text-slate-400'>
+										Level
+									</div>
 								</div>
 							</div>
 						</div>
 
-						{/* Moves */}
-						<div className='bg-slate-800/50 backdrop-blur-sm border border-slate-600 rounded-xl p-3'>
-							<div className='text-center'>
-								<div className='text-mobile-lg sm:text-xl font-bold text-amber-400'>
-									{gameState.moves}
-								</div>
-								<div className='text-mobile-xs text-slate-400'>
-									Moves
-								</div>
-							</div>
+						{/* Progress bar */}
+						<div className='mt-4 bg-slate-700 border border-slate-600 rounded-full h-2 sm:h-3 overflow-hidden'>
+							<motion.div
+								className='h-full bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-400 rounded-full'
+								initial={{ width: 0 }}
+								animate={{ width: `${progress}%` }}
+								transition={{ duration: 0.5 }}
+								style={{ backgroundSize: '200% 100%' }}
+							/>
 						</div>
+					</motion.div>
 
-						{/* Progress */}
-						<div className='bg-slate-800/50 backdrop-blur-sm border border-slate-600 rounded-xl p-3'>
-							<div className='text-center'>
-								<div className='text-mobile-lg sm:text-xl font-bold text-purple-400'>
-									{gameState.matchedPairs}/
-									{gameState.totalPairs}
-								</div>
-								<div className='text-mobile-xs text-slate-400'>
-									Pairs
-								</div>
-							</div>
-						</div>
+					{/* Tip overlay */}
+					<AnimatePresence>
+						{showTip && !gameStarted && (
+							<motion.div
+								className='fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4'
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+							>
+								<motion.div
+									className='bg-slate-800 border border-slate-600 rounded-2xl p-6 max-w-md mx-auto text-center'
+									initial={{ scale: 0.8, y: 50 }}
+									animate={{ scale: 1, y: 0 }}
+									exit={{ scale: 0.8, y: 50 }}
+								>
+									<div className='text-4xl mb-4'>💡</div>
+									<h3 className='text-mobile-lg sm:text-xl font-bold text-white mb-3'>
+										Ready to Play?
+									</h3>
+									<p className='text-slate-300 text-mobile-sm mb-4 leading-relaxed'>
+										{currentTip}
+									</p>
+									<button
+										onClick={startGame}
+										className='bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold py-3 px-6 rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 w-full touch-target'
+									>
+										🚀 Start Game
+									</button>
+								</motion.div>
+							</motion.div>
+						)}
+					</AnimatePresence>
 
-						{/* Difficulty */}
-						<div className='bg-slate-800/50 backdrop-blur-sm border border-slate-600 rounded-xl p-3'>
-							<div className='text-center'>
-								<div className='text-mobile-lg sm:text-xl font-bold text-teal-400'>
-									{config.name}
-								</div>
-								<div className='text-mobile-xs text-slate-400'>
-									Level
-								</div>
-							</div>
-						</div>
-					</div>
+					{/* Game board */}
+					<motion.div
+						className={`grid gap-2 sm:gap-3 mx-auto max-w-4xl`}
+						style={{
+							gridTemplateColumns: `repeat(${config.cols}, minmax(0, 1fr))`,
+							gridTemplateRows: `repeat(${config.rows}, minmax(0, 1fr))`,
+						}}
+						initial={{ opacity: 0, scale: 0.9 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.6, delay: 0.3 }}
+					>
+						{gameState.cards.map((card, index) => (
+							<MemoryCard
+								key={card.id}
+								card={card}
+								onCardClick={handleCardClick}
+								isClickable={
+									gameState.isPlaying &&
+									gameState.flippedCards.length < 2
+								}
+								index={index}
+							/>
+						))}
+					</motion.div>
 
-					{/* Progress bar */}
-					<div className='mt-4 bg-slate-700 border border-slate-600 rounded-full h-2 sm:h-3 overflow-hidden'>
+					{/* Game controls */}
+					{gameStarted && !gameState.isComplete && (
 						<motion.div
-							className='h-full bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-400 rounded-full'
-							initial={{ width: 0 }}
-							animate={{ width: `${progress}%` }}
-							transition={{ duration: 0.5 }}
-							style={{ backgroundSize: '200% 100%' }}
-						/>
-					</div>
-				</motion.div>
-
-				{/* Tip overlay */}
-				<AnimatePresence>
-					{showTip && !gameStarted && (
-						<motion.div
-							className='fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4'
+							className='mt-6 text-center'
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
+							transition={{ delay: 1 }}
 						>
-							<motion.div
-								className='bg-slate-800 border border-slate-600 rounded-2xl p-6 max-w-md mx-auto text-center'
-								initial={{ scale: 0.8, y: 50 }}
-								animate={{ scale: 1, y: 0 }}
-								exit={{ scale: 0.8, y: 50 }}
+							<button
+								onClick={resetGame}
+								className='bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 touch-target'
 							>
-								<div className='text-4xl mb-4'>💡</div>
-								<h3 className='text-mobile-lg sm:text-xl font-bold text-white mb-3'>
-									Ready to Play?
-								</h3>
-								<p className='text-slate-300 text-mobile-sm mb-4 leading-relaxed'>
-									{currentTip}
-								</p>
-								<button
-									onClick={startGame}
-									className='bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold py-3 px-6 rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 w-full touch-target'
-								>
-									🚀 Start Game
-								</button>
-							</motion.div>
+								🔄 Reset Game
+							</button>
 						</motion.div>
 					)}
-				</AnimatePresence>
-
-				{/* Game board */}
-				<motion.div
-					className={`grid gap-2 sm:gap-3 mx-auto max-w-4xl`}
-					style={{
-						gridTemplateColumns: `repeat(${config.cols}, minmax(0, 1fr))`,
-						gridTemplateRows: `repeat(${config.rows}, minmax(0, 1fr))`,
-					}}
-					initial={{ opacity: 0, scale: 0.9 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ duration: 0.6, delay: 0.3 }}
-				>
-					{gameState.cards.map((card, index) => (
-						<MemoryCard
-							key={card.id}
-							card={card}
-							onCardClick={handleCardClick}
-							isClickable={
-								gameState.isPlaying &&
-								gameState.flippedCards.length < 2
-							}
-							index={index}
-						/>
-					))}
-				</motion.div>
-
-				{/* Game controls */}
-				{gameStarted && !gameState.isComplete && (
-					<motion.div
-						className='mt-6 text-center'
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ delay: 1 }}
-					>
-						<button
-							onClick={resetGame}
-							className='bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 touch-target'
-						>
-							🔄 Reset Game
-						</button>
-					</motion.div>
-				)}
-			</div>
+				</div>
+			)}
 		</div>
 	);
 };
