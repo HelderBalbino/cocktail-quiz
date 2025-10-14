@@ -8,6 +8,27 @@
 	.touch-target {
 		min-height: 44px;
 		min-width: 44px;
+		touch-action: manipulation;
+	}
+
+	/* Enhanced mobile touch interactions */
+	.memory-card-touch {
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+
+	/* Improved button touch feedback */
+	.mobile-button {
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
+		transition: all 0.15s ease-in-out;
+	}
+
+	.mobile-button:active {
+		transform: scale(0.97);
 	}
 
 	/* Mobile-optimized text scaling */
@@ -109,6 +130,43 @@
 		top: 1rem;
 		left: 1rem;
 		padding: 0.5rem;
+	}
+}
+
+/* Memory card 3D flip effects */
+.backface-hidden {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+/* Memory game grid animations */
+@keyframes memory-card-entrance {
+	0% {
+		opacity: 0;
+		transform: scale(0.8) rotateY(-180deg);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) rotateY(0deg);
+	}
+}
+
+@keyframes memory-card-flip {
+	0% {
+		transform: rotateY(0deg);
+	}
+	100% {
+		transform: rotateY(180deg);
+	}
+}
+
+@keyframes memory-card-match {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
 	}
 }
 
