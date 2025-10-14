@@ -7,6 +7,7 @@ import {
 	MemoryCard,
 	CardType,
 } from '../types/memoryGame';
+import { fetchMultipleCocktailImages } from '../services/cocktailAPI';
 
 // Ingredient cards for memory matching
 export const ingredientCards: IngredientCard[] = [
@@ -157,16 +158,22 @@ const shuffleArray = <T>(array: T[]): T[] => {
 };
 
 // Generate memory cards for a specific difficulty
-export const generateMemoryCards = (difficulty: Difficulty): MemoryCard[] => {
+export const generateMemoryCards = async (
+	difficulty: Difficulty,
+): Promise<MemoryCard[]> => {
 	const config = difficultyConfigs[difficulty];
 	const pairsNeeded = config.gridSize / 2;
 	const cards: MemoryCard[] = [];
+
+	// Get enhanced cocktail cards with images
+	const enhancedCocktails = await getCocktailCardsWithImages();
 
 	// Get available cards based on difficulty
 	let availableCards: {
 		id: string;
 		name: string;
 		emoji: string;
+		imageUrl?: string;
 		type: CardType;
 	}[] = [];
 
@@ -180,7 +187,7 @@ export const generateMemoryCards = (difficulty: Difficulty): MemoryCard[] => {
 	}
 	if (config.cardTypes.includes('cocktail')) {
 		availableCards.push(
-			...cocktailCards.map((card) => ({
+			...enhancedCocktails.map((card) => ({
 				...card,
 				type: 'cocktail' as CardType,
 			})),
@@ -209,6 +216,7 @@ export const generateMemoryCards = (difficulty: Difficulty): MemoryCard[] => {
 			type: card.type,
 			value: card.name,
 			emoji: card.emoji,
+			image: card.imageUrl,
 			isFlipped: false,
 			isMatched: false,
 			pairId: pairId,
@@ -220,6 +228,7 @@ export const generateMemoryCards = (difficulty: Difficulty): MemoryCard[] => {
 			type: card.type,
 			value: card.name,
 			emoji: card.emoji,
+			image: card.imageUrl,
 			isFlipped: false,
 			isMatched: false,
 			pairId: pairId,
@@ -286,4 +295,49 @@ export const getMemoryGameTip = (): string => {
 	];
 
 	return tips[Math.floor(Math.random() * tips.length)];
+};
+
+/**
+ * Enhance cocktail cards with images from TheCocktailDB API
+ * @param cards - Original cocktail cards array
+ * @returns Promise<CocktailCard[]> - Enhanced cards with image URLs
+ */
+export const enhanceCocktailCardsWithImages = async (
+	cards: CocktailCard[],
+): Promise<CocktailCard[]> => {
+	try {
+		// Extract cocktail names for API requests
+		const cocktailNames = cards.map((card) => card.name);
+
+		// Fetch images for all cocktails
+		const imageMap = await fetchMultipleCocktailImages(cocktailNames);
+
+		// Enhance cards with image URLs
+		const enhancedCards = cards.map((card) => ({
+			...card,
+			imageUrl: imageMap.get(card.name) || undefined,
+		}));
+
+		return enhancedCards;
+	} catch (error) {
+		console.warn('Failed to enhance cocktail cards with images:', error);
+		// Return original cards as fallback
+		return cards;
+	}
+};
+
+/**
+ * Get cocktail cards with images (cached for performance)
+ */
+let enhancedCocktailCardsCache: CocktailCard[] | null = null;
+
+export const getCocktailCardsWithImages = async (): Promise<CocktailCard[]> => {
+	if (enhancedCocktailCardsCache) {
+		return enhancedCocktailCardsCache;
+	}
+
+	enhancedCocktailCardsCache = await enhanceCocktailCardsWithImages(
+		cocktailCards,
+	);
+	return enhancedCocktailCardsCache;
 };
