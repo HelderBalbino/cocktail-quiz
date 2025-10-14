@@ -71,6 +71,7 @@ export interface CocktailCard {
 	name: string;
 	emoji: string;
 	glass: string;
+	imageUrl?: string; // For TheCocktailDB images
 }
 
 export interface GlassCard {
