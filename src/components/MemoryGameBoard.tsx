@@ -5,13 +5,15 @@ import {
 	MemoryGameState,
 	Difficulty,
 	MemoryGameResult,
+	MemoryCard as MemoryCardType
 } from '../types/memoryGame';
 import {
-	generateMemoryCards,
 	difficultyConfigs,
 	calculateMemoryScore,
 	getMemoryGameTip,
+	cocktailCards
 } from '../data/memoryGame';
+import { getCocktailCardsWithImages } from '../data/memoryGame';
 
 interface MemoryGameBoardProps {
 	difficulty: Difficulty;
@@ -19,85 +21,104 @@ interface MemoryGameBoardProps {
 	onBackToSelection: () => void;
 }
 
+// Simple card generation function
+const generateSimpleCards = (difficulty: Difficulty): MemoryCardType[] => {
+	const config = difficultyConfigs[difficulty];
+	const pairsNeeded = config.gridSize / 2;
+	const cards: MemoryCardType[] = [];
+
+	const cocktailsToUse = cocktailCards.slice(0, pairsNeeded);
+
+	cocktailsToUse.forEach((card, index) => {
+		const pairId = `pair-${index}`;
+
+		// First card of the pair
+		cards.push({
+			id: `${card.id}-1`,
+			type: 'cocktail',
+			value: card.name,
+			emoji: card.emoji,
+			isFlipped: false,
+			isMatched: false,
+			pairId: pairId,
+		});
+
+		// Second card of the pair
+		cards.push({
+			id: `${card.id}-2`,
+			type: 'cocktail',
+			value: card.name,
+			emoji: card.emoji,
+			isFlipped: false,
+			isMatched: false,
+			pairId: pairId,
+		});
+	});
+
+	// Shuffle the cards
+	for (let i = cards.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[cards[i], cards[j]] = [cards[j], cards[i]];
+	}
+
+	return cards;
+};
+
 const MemoryGameBoard: React.FC<MemoryGameBoardProps> = ({
 	difficulty,
 	onGameComplete,
 	onBackToSelection,
 }) => {
-	const [gameState, setGameState] = useState<MemoryGameState | null>(null);
-	const [isLoading, setIsLoading] = useState(true);
+	const [gameState, setGameState] = useState<MemoryGameState>(() => {
+		const config = difficultyConfigs[difficulty];
+		const cards = generateSimpleCards(difficulty);
+
+		return {
+			cards,
+			difficulty,
+			flippedCards: [],
+			matchedPairs: 0,
+			totalPairs: cards.length / 2,
+			moves: 0,
+			timeLeft: config.timeLimit,
+			isComplete: false,
+			isPlaying: false,
+			score: 0,
+		};
+	});
+
 	const [showTip, setShowTip] = useState(false);
 	const [currentTip, setCurrentTip] = useState('');
 	const [gameStarted, setGameStarted] = useState(false);
 
-	// Initialize game with async card generation
+	// Load images in the background after component mounts
 	useEffect(() => {
-		const initializeGame = async () => {
-			setIsLoading(true);
+		const loadCocktailImages = async () => {
 			try {
-				const cards = await generateMemoryCards(difficulty);
-				const config = difficultyConfigs[difficulty];
+				const enhancedCocktails = await getCocktailCardsWithImages();
 
-				setGameState({
-					cards,
-					difficulty,
-					flippedCards: [],
-					matchedPairs: 0,
-					totalPairs: cards.length / 2,
-					moves: 0,
-					timeLeft: config.timeLimit,
-					isComplete: false,
-					isPlaying: false,
-					score: 0,
-				});
+				// Update existing cards with images
+				setGameState(prev => ({
+					...prev,
+					cards: prev.cards.map(card => {
+						if (card.type === 'cocktail') {
+							const enhanced = enhancedCocktails.find(c => c.name === card.value);
+							return {
+								...card,
+								image: enhanced?.imageUrl
+							};
+						}
+						return card;
+					})
+				}));
 			} catch (error) {
-				console.error('Failed to initialize memory game:', error);
-				// Fallback to sync version without images
-				const cards = await import('../data/memoryGame').then((m) =>
-					m.cocktailCards
-						.slice(0, difficultyConfigs[difficulty].gridSize / 2)
-						.flatMap((card, index) => [
-							{
-								id: `${card.id}-1`,
-								type: 'cocktail' as const,
-								value: card.name,
-								emoji: card.emoji,
-								isFlipped: false,
-								isMatched: false,
-								pairId: `pair-${index}`,
-							},
-							{
-								id: `${card.id}-2`,
-								type: 'cocktail' as const,
-								value: card.name,
-								emoji: card.emoji,
-								isFlipped: false,
-								isMatched: false,
-								pairId: `pair-${index}`,
-							},
-						]),
-				);
-
-				const config = difficultyConfigs[difficulty];
-				setGameState({
-					cards,
-					difficulty,
-					flippedCards: [],
-					matchedPairs: 0,
-					totalPairs: cards.length / 2,
-					moves: 0,
-					timeLeft: config.timeLimit,
-					isComplete: false,
-					isPlaying: false,
-					score: 0,
-				});
-			} finally {
-				setIsLoading(false);
+				console.warn('Failed to load cocktail images:', error);
+				// Continue with emoji-only cards
 			}
 		};
 
-		initializeGame();
-	}, [difficulty]);
+		loadCocktailImages();
+	}, []);
 
 	// Timer effect
 	useEffect(() => {
@@ -264,32 +285,44 @@ const MemoryGameBoard: React.FC<MemoryGameBoardProps> = ({
 		],
 	);
 
-	const resetGame = async () => {
-		setIsLoading(true);
-		try {
-			const cards = await generateMemoryCards(difficulty);
-			const config = difficultyConfigs[difficulty];
+	const resetGame = () => {
+		const cards = generateSimpleCards(difficulty);
+		const config = difficultyConfigs[difficulty];
 
-			setGameState({
-				cards,
-				difficulty,
-				flippedCards: [],
-				matchedPairs: 0,
-				totalPairs: cards.length / 2,
-				moves: 0,
-				timeLeft: config.timeLimit,
-				isComplete: false,
-				isPlaying: false,
-				score: 0,
-			});
-		} catch (error) {
-			console.error('Failed to reset game:', error);
-		} finally {
-			setIsLoading(false);
-		}
+		setGameState({
+			cards,
+			difficulty,
+			flippedCards: [],
+			matchedPairs: 0,
+			totalPairs: cards.length / 2,
+			moves: 0,
+			timeLeft: config.timeLimit,
+			isComplete: false,
+			isPlaying: false,
+			score: 0,
+		});
 		setGameStarted(false);
 		setShowTip(true);
 		setCurrentTip(getMemoryGameTip());
+
+		// Load images again for new cards
+		getCocktailCardsWithImages().then(enhancedCocktails => {
+			setGameState(prev => ({
+				...prev,
+				cards: prev.cards.map(card => {
+					if (card.type === 'cocktail') {
+						const enhanced = enhancedCocktails.find(c => c.name === card.value);
+						return {
+							...card,
+							image: enhanced?.imageUrl
+						};
+					}
+					return card;
+				})
+			}));
+		}).catch(error => {
+			console.warn('Failed to load cocktail images on reset:', error);
+		});
 	};
 
 	const config = difficultyConfigs[difficulty];
@@ -305,36 +338,10 @@ const MemoryGameBoard: React.FC<MemoryGameBoardProps> = ({
 
 	return (
 		<div className='min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900'>
-			{isLoading || !gameState ? (
-				<div className='flex items-center justify-center min-h-screen'>
-					<motion.div
-						className='text-center'
-						initial={{ opacity: 0, scale: 0.8 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ duration: 0.6 }}
-					>
-						<div className='text-6xl mb-4 animate-bounce'>🧩</div>
-						<h2 className='text-2xl text-white font-bold mb-2'>
-							Loading Memory Game
-						</h2>
-						<p className='text-slate-300 mb-4'>
-							Fetching cocktail images...
-						</p>
-						<div className='w-48 h-2 bg-slate-700 rounded-full overflow-hidden mx-auto'>
-							<motion.div
-								className='h-full bg-gradient-to-r from-blue-600 to-cyan-600'
-								initial={{ width: '0%' }}
-								animate={{ width: '100%' }}
-								transition={{ duration: 2, repeat: Infinity }}
-							/>
-						</div>
-					</motion.div>
-				</div>
-			) : (
-				<div className='container mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6 lg:py-8'>
-					{/* Header */}
-					<motion.div
-						className='mb-4 sm:mb-6'
+			<div className='container mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6 lg:py-8'>
+				{/* Header */}
+				<motion.div
+					className='mb-4 sm:mb-6'
 						initial={{ opacity: 0, y: -30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
@@ -533,7 +540,7 @@ const MemoryGameBoard: React.FC<MemoryGameBoardProps> = ({
 						</motion.div>
 					)}
 				</div>
-			)}
+			</div>
 		</div>
 	);
 };
