@@ -52,6 +52,13 @@ export const ingredients: Ingredient[] = [
 		emoji: '🌽',
 		color: 'bg-orange-600',
 	},
+	{
+		id: 'rye-whiskey',
+		name: 'Rye Whiskey',
+		category: 'spirit',
+		emoji: '🌾',
+		color: 'bg-amber-700',
+	},
 
 	// Liqueurs
 	{
@@ -193,6 +200,13 @@ export const ingredients: Ingredient[] = [
 		emoji: '🥤',
 		color: 'bg-amber-900',
 	},
+	{
+		id: 'champagne',
+		name: 'Champagne',
+		category: 'mixer',
+		emoji: '🍾',
+		color: 'bg-yellow-200',
+	},
 
 	// Garnishes
 	{
@@ -215,6 +229,13 @@ export const ingredients: Ingredient[] = [
 		category: 'garnish',
 		emoji: '🍊',
 		color: 'bg-orange-400',
+	},
+	{
+		id: 'lemon-twist',
+		name: 'Lemon Twist',
+		category: 'garnish',
+		emoji: '🍋',
+		color: 'bg-yellow-400',
 	},
 	{
 		id: 'cherry',
@@ -535,6 +556,79 @@ const baseCocktailRecipes: CocktailRecipe[] = [
 		difficulty: 'easy',
 		history:
 			"The Moscow Mule was invented in 1941 at the Cock 'n' Bull pub in Hollywood by owner Jack Morgan, who was struggling to sell his homemade ginger beer. He partnered with John Martin from Heublein spirits (promoting Smirnoff vodka) and Sophie Berezinski (selling copper mugs). Together they created this cocktail, served in the distinctive copper mug, which became essential to the drink's identity. The copper mug keeps the drink colder and enhances the aroma. The Moscow Mule helped introduce vodka to American palates and sparked the tiki cocktail movement of the 1940s-50s.",
+	},
+	{
+		id: 'french-75',
+		name: 'French 75',
+		emoji: '🥂',
+		description: 'An elegant and effervescent gin cocktail with champagne',
+		ingredients: [
+			{
+				ingredient: findIngredient('gin'),
+				amount: '30ml',
+				essential: true,
+			},
+			{
+				ingredient: findIngredient('lemon-juice'),
+				amount: '15ml',
+				essential: true,
+			},
+			{
+				ingredient: findIngredient('simple-syrup'),
+				amount: '10ml',
+				essential: true,
+			},
+			{
+				ingredient: findIngredient('champagne'),
+				amount: 'Top',
+				essential: true,
+			},
+			{
+				ingredient: findIngredient('lemon-twist'),
+				amount: '1 twist',
+				essential: false,
+			},
+		],
+		instructions:
+			'Shake gin, lemon juice, and simple syrup with ice. Strain into champagne flute and top with champagne. Garnish with lemon twist.',
+		glassware: 'Champagne Flute',
+		difficulty: 'medium',
+		history:
+			'The French 75 was created in 1915 at the New York Bar in Paris (later Harry\'s Bar) by barman Harry MacElhone. Originally called "Soixante-Quinze," it was named after the French 75mm field gun used in World War I, supposedly because the cocktail had such a kick. The drink gained popularity among American expatriates in Paris during the 1920s and became a symbol of celebration and victory. The combination of gin and champagne creates a sophisticated, effervescent cocktail that embodies the elegance of French cocktail culture.',
+	},
+	{
+		id: 'manhattan',
+		name: 'Manhattan',
+		emoji: '🗽',
+		description: 'The sophisticated whiskey cocktail with sweet vermouth',
+		ingredients: [
+			{
+				ingredient: findIngredient('rye-whiskey'),
+				amount: '50ml',
+				essential: true,
+			},
+			{
+				ingredient: findIngredient('sweet-vermouth'),
+				amount: '25ml',
+				essential: true,
+			},
+			{
+				ingredient: findIngredient('angostura'),
+				amount: '2-3 dashes',
+				essential: true,
+			},
+			{
+				ingredient: findIngredient('cherry'),
+				amount: '1 cherry',
+				essential: false,
+			},
+		],
+		instructions:
+			'Stir all ingredients with ice. Strain into chilled coupe glass or over large ice cube in rocks glass. Garnish with maraschino cherry.',
+		glassware: 'Coupe Glass',
+		difficulty: 'medium',
+		history:
+			"The Manhattan was invented in the 1870s, likely at the Manhattan Club in New York City for a banquet hosted by Lady Randolph Churchill (Winston Churchill's mother) in honor of presidential candidate Samuel J. Tilden. However, some historians dispute this origin story. The cocktail became the template for whiskey-based stirred drinks and was one of the first cocktails to gain widespread popularity across America. Originally made with rye whiskey (which was more common than bourbon in the 19th century), the Manhattan represents the sophistication of New York's Gilded Age society.",
 	},
 ];
 
