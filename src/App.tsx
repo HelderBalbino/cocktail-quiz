@@ -7,8 +7,6 @@ import Timer from './components/Timer';
 import GameModeSelection from './components/GameModeSelection';
 import CocktailBuilderCard from './components/CocktailBuilderCard';
 import CocktailBuilderResults from './components/CocktailBuilderResults';
-import MemoryGameBoard from './components/MemoryGameBoard';
-import MemoryGameResults from './components/MemoryGameResults';
 import { getShuffledQuestions } from './data/questions';
 import { getShuffledCocktailRecipes } from './data/cocktailRecipes';
 import { QuizState, QuizResult } from './types/quiz';
@@ -17,7 +15,6 @@ import {
 	CocktailBuilderResult,
 	Ingredient,
 } from './types/cocktailBuilder';
-import { MemoryGameResult, Difficulty } from './types/memoryGame';
 
 type AppState =
 	| 'game-selection'
@@ -26,10 +23,7 @@ type AppState =
 	| 'quiz-results'
 	| 'cocktail-start'
 	| 'cocktail-playing'
-	| 'cocktail-results'
-	| 'memory-start'
-	| 'memory-playing'
-	| 'memory-results';
+	| 'cocktail-results';
 
 function App() {
 	// App state management
@@ -68,22 +62,12 @@ function App() {
 	const [showCocktailResults, setShowCocktailResults] = useState(false);
 	const [cocktailScores, setCocktailScores] = useState<number[]>([]);
 
-	// Memory game state
-	const [memoryGameResult, setMemoryGameResult] =
-		useState<MemoryGameResult | null>(null);
-	const [selectedDifficulty, setSelectedDifficulty] =
-		useState<Difficulty>('easy');
-
 	// Game mode selection handlers
-	const handleGameModeSelect = (
-		mode: 'quiz' | 'cocktail-builder' | 'memory-game',
-	) => {
+	const handleGameModeSelect = (mode: 'quiz' | 'cocktail-builder') => {
 		if (mode === 'quiz') {
 			setAppState('quiz-start');
-		} else if (mode === 'cocktail-builder') {
-			setAppState('cocktail-start');
 		} else {
-			setAppState('memory-start');
+			setAppState('cocktail-start');
 		}
 	};
 
@@ -92,7 +76,6 @@ function App() {
 		// Reset all states
 		resetQuiz();
 		resetCocktailBuilder();
-		resetMemoryGame();
 	};
 
 	// Quiz handlers
@@ -330,21 +313,6 @@ function App() {
 		setCocktailScores([]);
 	};
 
-	// Memory game handlers
-	const startMemoryGame = () => {
-		setAppState('memory-playing');
-		setMemoryGameResult(null);
-	};
-
-	const handleMemoryGameComplete = (result: MemoryGameResult) => {
-		setMemoryGameResult(result);
-		setAppState('memory-results');
-	};
-
-	const resetMemoryGame = () => {
-		setMemoryGameResult(null);
-	};
-
 	// Render based on app state
 	if (appState === 'game-selection') {
 		return (
@@ -446,105 +414,6 @@ function App() {
 					/>
 				</div>
 			</div>
-		);
-	}
-
-	if (appState === 'memory-start') {
-		return (
-			<div className='min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900'>
-				<div className='container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8'>
-					<div className='text-center max-w-4xl mx-auto'>
-						<div className='text-6xl mb-4 animate-float'>🧩</div>
-						<h1 className='text-3xl font-bold text-white mb-4'>
-							Memory Match
-						</h1>
-						<p className='text-slate-300 mb-8 max-w-2xl mx-auto'>
-							Test your memory by matching cocktail ingredients,
-							names, and glasses. Choose your difficulty and see
-							how quickly you can clear the board!
-						</p>
-
-						{/* Difficulty Selection */}
-						<div className='mb-8'>
-							<h3 className='text-xl text-white mb-4'>
-								Choose Difficulty
-							</h3>
-							<div className='grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto'>
-								{(
-									['easy', 'medium', 'hard'] as Difficulty[]
-								).map((diff) => (
-									<button
-										key={diff}
-										onClick={() => {
-											setSelectedDifficulty(diff);
-											startMemoryGame();
-										}}
-										className={`p-4 rounded-lg border-2 transition-all duration-300 ${
-											selectedDifficulty === diff
-												? 'bg-blue-600 border-blue-400 text-white'
-												: 'bg-slate-700 border-slate-600 text-slate-300 hover:bg-slate-600'
-										}`}
-									>
-										<div className='text-2xl mb-2'>
-											{diff === 'easy'
-												? '😊'
-												: diff === 'medium'
-												? '🤔'
-												: '😤'}
-										</div>
-										<div className='font-bold capitalize'>
-											{diff}
-										</div>
-										<div className='text-sm opacity-75'>
-											{diff === 'easy' &&
-												'4x3 Grid • 3 Min'}
-											{diff === 'medium' &&
-												'4x4 Grid • 4 Min'}
-											{diff === 'hard' &&
-												'4x5 Grid • 5 Min'}
-										</div>
-									</button>
-								))}
-							</div>
-						</div>
-					</div>
-					{/* Back button */}
-					<div className='fixed top-4 left-4'>
-						<button
-							onClick={backToGameSelection}
-							className='bg-slate-700 hover:bg-slate-600 text-white p-2 rounded-lg transition-colors duration-200'
-						>
-							← Back
-						</button>
-					</div>
-				</div>
-			</div>
-		);
-	}
-
-	if (appState === 'memory-playing') {
-		return (
-			<div className='min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900'>
-				<MemoryGameBoard
-					difficulty={selectedDifficulty}
-					onGameComplete={handleMemoryGameComplete}
-					onBackToSelection={backToGameSelection}
-				/>
-			</div>
-		);
-	}
-
-	if (appState === 'memory-results') {
-		if (!memoryGameResult) {
-			return <div>Loading...</div>;
-		}
-
-		return (
-			<MemoryGameResults
-				result={memoryGameResult}
-				onPlayAgain={startMemoryGame}
-				onBackToSelection={backToGameSelection}
-			/>
 		);
 	}
 
