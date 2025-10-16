@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { GameMode } from '../types/cocktailBuilder';
 
 interface GameModeSelectionProps {
-	onSelectMode: (mode: 'quiz' | 'cocktail-builder' | 'memory-game') => void;
+	onSelectMode: (mode: 'quiz' | 'cocktail-builder') => void;
 }
 
 const GameModeSelection: React.FC<GameModeSelectionProps> = ({
@@ -40,19 +40,6 @@ const GameModeSelection: React.FC<GameModeSelectionProps> = ({
 				'Visual Feedback',
 				'Recipe Learning',
 				'Multiple Difficulty Levels',
-			],
-		},
-		{
-			id: 'memory-game',
-			name: 'Memory Match',
-			description: 'Match cocktail ingredients in this memory card game',
-			emoji: '🧩',
-			color: 'from-blue-600 to-cyan-600',
-			features: [
-				'3D Flip Animations',
-				'Multiple Difficulties',
-				'Timer Challenge',
-				'Mobile Optimized',
 			],
 		},
 	];
@@ -109,7 +96,7 @@ const GameModeSelection: React.FC<GameModeSelectionProps> = ({
 
 				{/* Game Mode Cards */}
 				<div
-					className={`grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 ${
+					className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 ${
 						showContent ? 'animate-slide-in-left' : 'opacity-0'
 					}`}
 					style={{ animationDelay: '0.3s' }}
@@ -123,10 +110,7 @@ const GameModeSelection: React.FC<GameModeSelectionProps> = ({
 							style={{ animationDelay: `${0.5 + index * 0.2}s` }}
 							onClick={() =>
 								onSelectMode(
-									mode.id as
-										| 'quiz'
-										| 'cocktail-builder'
-										| 'memory-game',
+									mode.id as 'quiz' | 'cocktail-builder',
 								)
 							}
 						>
